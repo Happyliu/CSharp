@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "CoffeeStore"
+  },
+  "hostingPlanName": {
+    "value": "CoffeeStore"
+  },
+  "siteLocation": {
+    "value": "South Central US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "zhaodb"
+  },
+  "serverLocation": {
+    "value": "South Central US"
+  },
+  "administratorLogin": {
+    "value": "hellozhao"
+  },
+  "administratorLoginPassword": {
+    "value": "Liuzhao123"
+  },
+  "databaseName": {
+    "value": "CoffeeStore_db"
+  }
+}
