@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace CoffeeStore.Controllers
 {
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
         private IProductRepository repository;
@@ -24,9 +25,26 @@ namespace CoffeeStore.Controllers
             return repository.Products;
         }
 
-        public IEnumerable<Product> GetProducts(int id)
+        public HttpResponseMessage GetProduct(int id)
         {
-            return repository.GetProductsByCatID(id);
+            Product product = repository.GetProductById(id);
+            if (product == null)
+            {
+                HttpError error = new HttpError();
+                error.Message = "No such date item";
+                error.Add("RequestID", id);
+                error.Add("AvailbelIDs", repository.Products.Select(x => x.ProductID));
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, error);
+            }
+            return Request.CreateResponse(product);
+        }
+
+        [Route("category/{id}")]
+        public IHttpActionResult GetProducts(int id)
+        {
+            if (id < 0 || id > 2)
+                return BadRequest("No such category");
+            return Ok(repository.GetProductsByCatID(id));
         }
 
         public IEnumerable<Product> GetProductsByPriceRange(int min, int max)
@@ -34,16 +52,18 @@ namespace CoffeeStore.Controllers
             return repository.GetProductByPriceRange(min, max);
         }
 
-        public async Task<IHttpActionResult> PostProduct(Product product)
+        public async Task<HttpResponseMessage> PostProduct(Product product)
         {
             if (ModelState.IsValid)
             {
                 await repository.SaveProductAsync(product);
-                return Ok();
+                return Request.CreateResponse();
             }
             else
             {
-                return BadRequest(ModelState);
+                HttpError error = new HttpError(ModelState, false);
+                error.Message = "Cannot Add Product";
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, error);
             }
         }
 
