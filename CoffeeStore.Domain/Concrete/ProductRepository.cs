@@ -92,6 +92,15 @@ namespace CoffeeStore.Domain.Concrete
             return dbEntry;
         }
 
+        public async Task<int> AddCommentAsync(Comment comment)
+        {
+            if (comment != null)
+            {
+                context.Comments.Add(comment);
+            }
+            return await context.SaveChangesAsync();
+        }
+
         public Product DeleteProduct(int productID)
         {
             Product dbEntry = context.Products.Find(productID);
@@ -102,7 +111,6 @@ namespace CoffeeStore.Domain.Concrete
             context.SaveChanges();
             return dbEntry;
         }
-
 
 
     }

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace CoffeeStore.Domain.Entities
+namespace CoffeeStore.Models
 {
-    public class Comment
+    public class CommentDTO
     {
         public int ProductID { get; set; }
         public int CommentID { get; set; }
@@ -14,7 +13,5 @@ namespace CoffeeStore.Domain.Entities
         public string CommentText { get; set; }
         public string Author { get; set; }
         public DateTime CommentTime { get; set; }
-
-        public Product Product { get; set; }
     }
 }
