@@ -18,5 +18,6 @@ namespace CoffeeStore.Domain.Abstract
         Task<Product> DeleteProductAsync(int productId);
         Product DeleteProduct(int productId);
         Task<int> AddCommentAsync(Comment comment);
+        IEnumerable<Product> GetProductsByLabel(string label);
     }
 }

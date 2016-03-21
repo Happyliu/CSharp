@@ -112,6 +112,10 @@ namespace CoffeeStore.Domain.Concrete
             return dbEntry;
         }
 
+        public IEnumerable<Product> GetProductsByLabel(string label)
+        {
+            return context.Products.Where(m => m.Label.Equals(label));
+        }
 
     }
 }

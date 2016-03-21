@@ -1,12 +1,18 @@
-﻿using CoffeeStore.Domain.Entities;
+﻿using CoffeeStore.Domain.Abstract;
+using CoffeeStore.Domain.Concrete;
+using CoffeeStore.Domain.Entities;
 using CoffeeStore.Models;
+using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Web;
 
 namespace CoffeeStore
 {
     public static class DataHelper
     {
+        static ICommentRepository commentRepository = new CommentRepository();
+
 
         public static IList<ProductDTO> ChangeProductEntityToDTO(List<Product> products)
         {
@@ -22,7 +28,9 @@ namespace CoffeeStore
                     Label = m.Label,
                     Description = m.Description,
                     ImageData = m.ImageData,
-                    ImageMimeType = m.ImageMimeType
+                    ImageMimeType = m.ImageMimeType,
+                    Rating = commentRepository.GetRatingByProductID(m.ProductID),
+                    NoOfComments = commentRepository.GetCommentsByProductID(m.ProductID).Count()
                 });
             });
             return list;
@@ -37,7 +45,9 @@ namespace CoffeeStore
                 P_Name = product.P_Name,
                 P_Price = product.P_Price,
                 Label = product.Label,
-                Description = product.Description
+                Description = product.Description,
+                Rating = commentRepository.GetRatingByProductID(product.ProductID),
+                NoOfComments = commentRepository.GetCommentsByProductID(product.ProductID).Count()
             };
         }
 

@@ -12,5 +12,6 @@ namespace CoffeeStore.Domain.Abstract
         IEnumerable<Comment> Comments();
         Task<int> SaveCommentAsync(Comment comment);
         IEnumerable<Comment> GetCommentsByProductID(int productId);
+        double GetRatingByProductID(int poductId);
     }
 }

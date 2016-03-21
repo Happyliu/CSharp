@@ -48,5 +48,14 @@ namespace CoffeeStore.Domain.Concrete
             }
         }
 
+        public double GetRatingByProductID(int productId)
+        {
+            IList<Comment> result = context.Comments.Where(m => m.ProductID == productId).ToList();
+            if (result.Count > 0)
+                return result.Average(m => m.Rating);
+            else
+                return 0;
+        }
+
     }
 }

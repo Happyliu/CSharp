@@ -51,6 +51,11 @@ namespace CoffeeStore.Controllers
             return Ok(DataHelper.ChangeProductEntityToDTO(repository.GetProductsByCatID(id).ToList()));
         }
 
+        public IEnumerable<ProductDTO> GetProductsByLabel(string label)
+        {
+            return DataHelper.ChangeProductEntityToDTO(repository.GetProductsByLabel(label).ToList());
+        }
+
         public IEnumerable<ProductDTO> GetProductsByPriceRange(int min, int max)
         {
             return DataHelper.ChangeProductEntityToDTO(repository.GetProductByPriceRange(min, max).ToList());
