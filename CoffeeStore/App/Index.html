@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="coffeeStoreApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-social.css" rel="stylesheet" />
+    <link href="Content/mystyles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="">
+
+</head>
+<body>
+
+    <div ui-view="header"></div>
+
+    <div ui-view="content"></div>
+
+    <div ui-view="footer"></div>
+
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <script src="Scripts/controllers.js"></script>
+    <script src="Scripts/services.js"></script>
+
+</body>
+</html>
