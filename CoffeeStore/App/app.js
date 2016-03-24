@@ -1,4 +1,4 @@
-﻿var app = angular.module('coffeeStoreApp', ['ui.router']);
+﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ngTable']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -20,5 +20,18 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         }
     })
+
+    //route for the menu page
+    .state('app.menu', {
+        url: 'menu',
+        views: {
+            'content@': {
+                templateUrl: 'views/menu.html',
+                controller: 'MenuController'
+            }
+        }
+    })
+
+    $urlRouterProvider.otherwise('/');
 
 });

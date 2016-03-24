@@ -51,6 +51,7 @@ namespace CoffeeStore.Domain.Concrete
                     dbEntry.Label = product.Label;
                     dbEntry.ImageMimeType = product.ImageMimeType;
                     dbEntry.ImageData = product.ImageData;
+                    dbEntry.Description = product.Description;
                 }
             }
 
@@ -115,6 +116,11 @@ namespace CoffeeStore.Domain.Concrete
         public IEnumerable<Product> GetProductsByLabel(string label)
         {
             return context.Products.Where(m => m.Label.Equals(label));
+        }
+
+        public string GetCategoryName(int categoryId)
+        {
+            return context.Categories.Where(m => m.CategoryID == categoryId).SingleOrDefault().Cat_Name;
         }
 
     }

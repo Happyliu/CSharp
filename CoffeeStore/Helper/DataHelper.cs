@@ -12,7 +12,7 @@ namespace CoffeeStore
     public static class DataHelper
     {
         static ICommentRepository commentRepository = new CommentRepository();
-
+        static IProductRepository productRepository = new ProductRepository();
 
         public static IList<ProductDTO> ChangeProductEntityToDTO(List<Product> products)
         {
@@ -22,7 +22,7 @@ namespace CoffeeStore
                 list.Add(new ProductDTO
                 {
                     ProductID = m.ProductID,
-                    CategoryID = m.CategoryID,
+                    CategoryName = productRepository.GetCategoryName(m.CategoryID),
                     P_Name = m.P_Name,
                     P_Price = m.P_Price,
                     Label = m.Label,
@@ -41,7 +41,7 @@ namespace CoffeeStore
             return new ProductDTO
             {
                 ProductID = product.ProductID,
-                CategoryID = product.CategoryID,
+                CategoryName = productRepository.GetCategoryName(product.CategoryID),
                 P_Name = product.P_Name,
                 P_Price = product.P_Price,
                 Label = product.Label,

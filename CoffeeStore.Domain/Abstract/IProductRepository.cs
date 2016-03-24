@@ -19,5 +19,6 @@ namespace CoffeeStore.Domain.Abstract
         Product DeleteProduct(int productId);
         Task<int> AddCommentAsync(Comment comment);
         IEnumerable<Product> GetProductsByLabel(string label);
+        string GetCategoryName(int categoryId);
     }
 }

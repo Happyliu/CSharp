@@ -8,7 +8,7 @@ namespace CoffeeStore.Models
     public class ProductDTO
     {
         public int ProductID { get; set; }
-        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
         public string P_Name { get; set; }
         public decimal P_Price { get; set; }
         public string Label { get; set; }
