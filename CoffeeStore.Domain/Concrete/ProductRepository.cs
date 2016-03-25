@@ -76,6 +76,7 @@ namespace CoffeeStore.Domain.Concrete
                     dbEntry.Label = product.Label;
                     dbEntry.ImageMimeType = product.ImageMimeType;
                     dbEntry.ImageData = product.ImageData;
+                    dbEntry.Description = product.Description;
                 }
             }
 

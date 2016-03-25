@@ -11,6 +11,8 @@
                 switch (property.PropertyName)
                 {
                     case "ProductID":
+                    case "Comments":
+                    case "Category":
                     case "ImageData":
                     case "ImageMimeType":
                         //do nothing
@@ -48,7 +50,7 @@
                 }
                 else
                 {
-                    <img class="img-thumbnail" width="150" height="150" src="@Url.Action("GetImage","Product",new{Model.ProductID})" />
+                    <img class="img-thumbnail" width="150" height="150" src="@Url.Action("GetImage","Home",new{Model.ProductID})" />
                 }
             </div>
         </div>

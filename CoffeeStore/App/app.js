@@ -1,4 +1,17 @@
-﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ngTable']);
+﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ui.bootstrap', 'ngTable']);
+
+app.controller('HeaderController', function ($scope) {
+
+});
+
+app.controller('DropdownCtrl', function ($scope) {
+
+    $scope.items = [
+        "The first choice!",
+        "And another choice for you.",
+        "but wait! A third!"
+    ];
+});
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -31,6 +44,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         }
     })
+
+    //route for dishdetail page
+    .state('app.productdetails', {
+        url: 'menu/:id',
+        views: {
+            'content@': {
+                templateUrl: 'views/productdetail.html',
+                controller: 'ProductDetailController'
+            }
+        }
+    });
 
     $urlRouterProvider.otherwise('/');
 

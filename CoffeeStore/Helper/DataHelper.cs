@@ -46,6 +46,8 @@ namespace CoffeeStore
                 P_Price = product.P_Price,
                 Label = product.Label,
                 Description = product.Description,
+                ImageData = product.ImageData,
+                ImageMimeType = product.ImageMimeType,
                 Rating = commentRepository.GetRatingByProductID(product.ProductID),
                 NoOfComments = commentRepository.GetCommentsByProductID(product.ProductID).Count()
             };
