@@ -42,12 +42,20 @@ namespace CoffeeStore.Controllers.api
             }
         }
 
-        [Route("product/{id}")]
+        //comment/product?id=1
+        [Route("product")]
         public HttpResponseMessage GetComment(int id)
         {
 
             return Request.CreateResponse(DataHelper.ChangeCommentListToDTO(repository.GetCommentsByProductID(id).ToList()));
 
         }
+
+        [Route("rating/{id}")]
+        public HttpResponseMessage GetRating(int id)
+        {
+            return Request.CreateResponse(repository.GetRatingByProductID(id));
+        }
+
     }
 }
