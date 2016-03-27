@@ -70,6 +70,11 @@
   background-color: #303f9f;
   color: #eeeeee;
 }
+.navbar-right{
+  float: right !important;
+  margin-right: 15px;
+  margin-left: 15px;
+}
 address {
   color: #0f0f0f;
   font-size: 80%;

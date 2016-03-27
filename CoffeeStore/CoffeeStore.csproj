@@ -172,16 +172,17 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Content\mystyles.css" />
+    <Content Include="App\Controllers\globalcontroller.js" />
+    <Content Include="App\Controllers\homecontroller.js" />
     <Content Include="App\Controllers\menucontroller.js" />
     <Content Include="App\Controllers\productdetailcontroller.js" />
     <Content Include="App\Images\logo.PNG" />
     <Content Include="App\Index.html" />
-    <Content Include="App\Scripts\controllers.js" />
-    <Content Include="App\Scripts\services.js" />
     <Content Include="App\Services\menufactoryservice.js" />
     <Content Include="App\Views\footer.html" />
     <Content Include="App\Views\header.html" />
     <Content Include="App\Views\home.html" />
+    <Content Include="App\Views\loginmodal.html" />
     <Content Include="App\Views\menu.html" />
     <Content Include="App\Views\productdetail.html" />
     <Content Include="Content\bootstrap-social.css" />
@@ -213,7 +214,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-table.min.js" />
-    <Content Include="Scripts\ui-bootstrap-tpls-0.12.0.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
@@ -252,6 +253,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Directive\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

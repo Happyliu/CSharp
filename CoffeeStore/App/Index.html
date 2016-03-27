@@ -11,7 +11,7 @@
     <link href="../Content/ng-table.min.css" rel="stylesheet" />
 
 </head>
-<body>
+<body ng-controller="GlobalController">
 
     <div ui-view="header"></div>
 
@@ -21,9 +21,10 @@
 
     <script src="../Scripts/angular.min.js"></script>
     <script src="../Scripts/angular-ui-router.min.js"></script>
-    <script src="../Scripts/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script src="../Scripts/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="app.js"></script>
-    <script src="Scripts/controllers.js"></script>
+    <script src="Controllers/globalcontroller.js"></script>
+    <script src="Controllers/homecontroller.js"></script>
     <script src="Services/menufactoryservice.js"></script>
     <script src="Controllers/productdetailcontroller.js"></script>
     <script src="Controllers/menucontroller.js"></script>

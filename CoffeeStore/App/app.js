@@ -1,18 +1,5 @@
 ﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ui.bootstrap', 'ngTable']);
 
-app.controller('HeaderController', function ($scope) {
-
-});
-
-app.controller('DropdownCtrl', function ($scope) {
-
-    $scope.items = [
-        "The first choice!",
-        "And another choice for you.",
-        "but wait! A third!"
-    ];
-});
-
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
@@ -30,6 +17,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             },
             'footer': {
                 templateUrl: 'Views/footer.html'
+            }
+        }
+    })
+
+    //route for the contactus page
+    .state('app.contactus', {
+        url: 'contactus',
+        views: {
+            'content@': {
+                templateUrl: 'views/contactus.html',
+                controller: 'ContactController'
             }
         }
     })
