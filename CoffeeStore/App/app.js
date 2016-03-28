@@ -54,6 +54,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         }
     });
 
-    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 
+    $urlRouterProvider.otherwise('/');
+    //$locationProvider.html5Model(true);
 });

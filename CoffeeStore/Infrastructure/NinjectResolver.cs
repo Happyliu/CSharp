@@ -43,6 +43,7 @@ namespace CoffeeStore.Infrastructure
             // singleton and transient bindings go here
             kernel.Bind<IProductRepository>().To<ProductRepository>().InRequestScope();
             kernel.Bind<ICommentRepository>().To<CommentRepository>().InRequestScope();
+            kernel.Bind<IOrderRepository>().To<OrderRepository>().InRequestScope();
         }
     }
 }
