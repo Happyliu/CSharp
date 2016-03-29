@@ -97,5 +97,93 @@ namespace CoffeeStore
             return list;
         }
 
+        public static Order ChangeOrderDTOToOrder(OrderDTO orderDTO)
+        {
+            ICollection<OrderLine> list = new List<OrderLine>();
+            orderDTO.Lines.ToList().ForEach(orderLineDTO =>
+            {
+                list.Add(new OrderLine
+                {
+                    Qty = orderLineDTO.Qty,
+                    Price = orderLineDTO.Price,
+                    ProductID = orderLineDTO.ProductID,
+                    CustomerID = orderLineDTO.CustomerID
+                });
+            });
+            Order order = new Order
+            {
+                StoreID = orderDTO.StoreID,
+                CustomerID = orderDTO.CustomerID,
+                OrderPrice = orderDTO.OrderPrice,
+                OrderTime = orderDTO.OrderTime,
+                PickUp = orderDTO.PickUp,
+                PickUpTime = orderDTO.PickUpTime,
+                Status = orderDTO.Status,
+                Lines = list
+            };
+            return order;
+        }
+
+        public static OrderDTO ChangeOrderToDTO(Order order)
+        {
+            ICollection<OrderLineDTO> list = new List<OrderLineDTO>();
+            order.Lines.ToList().ForEach(orderline =>
+            {
+                list.Add(new OrderLineDTO
+                {
+                    Qty = orderline.Qty,
+                    Price = orderline.Price,
+                    ProductID = orderline.ProductID,
+                    CustomerID = orderline.CustomerID
+                });
+            });
+            OrderDTO orderdto = new OrderDTO
+            {
+                OrderID = order.OrderID,
+                StoreID = order.StoreID,
+                CustomerID = order.CustomerID,
+                OrderPrice = order.OrderPrice,
+                OrderTime = order.OrderTime,
+                PickUp = order.PickUp,
+                PickUpTime = order.PickUpTime,
+                Status = order.Status,
+                Lines = list
+            };
+            return orderdto;
+        }
+
+        public static IList<OrderDTO> ChangeOrderListToDTO(List<Order> orders)
+        {
+            IList<OrderDTO> list = new List<OrderDTO>();
+            orders.ForEach(order =>
+            {
+                ICollection<OrderLineDTO> orderlinelist = new List<OrderLineDTO>();
+                order.Lines.ToList().ForEach(orderline =>
+                {
+                    orderlinelist.Add(new OrderLineDTO
+                    {
+                        Qty = orderline.Qty,
+                        Price = orderline.Price,
+                        ProductID = orderline.ProductID,
+                        CustomerID = orderline.CustomerID
+                    });
+                });
+                OrderDTO orderdto = new OrderDTO
+                {
+                    OrderID = order.OrderID,
+                    StoreID = order.StoreID,
+                    CustomerID = order.CustomerID,
+                    OrderPrice = order.OrderPrice,
+                    OrderTime = order.OrderTime,
+                    PickUp = order.PickUp,
+                    PickUpTime = order.PickUpTime,
+                    Status = order.Status,
+                    Lines = orderlinelist
+                };
+                list.Add(orderdto);
+            });
+            return list;
+        }
+
     }
 }

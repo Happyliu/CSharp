@@ -232,6 +232,8 @@
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Infrastructure\NinjectResolver.cs" />
     <Compile Include="Models\CommentDTO.cs" />
+    <Compile Include="Models\OrderDTO.cs" />
+    <Compile Include="Models\OrderLineDTO.cs" />
     <Compile Include="Models\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

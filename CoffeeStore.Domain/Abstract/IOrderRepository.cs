@@ -11,5 +11,8 @@ namespace CoffeeStore.Domain.Abstract
     {
         Order GetOrderDetailById(int orderId);
         IEnumerable<Order> GetOrders();
+        Task<int> PlaceOrder(Order order);
+        Task<int> DeleteOrder(int orderId);
+        IEnumerable<Order> GetOrderDetailsByCustomerID(int customerId);
     }
 }
