@@ -223,6 +223,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\CommentController.cs" />
+    <Compile Include="Controllers\api\LoginController.cs" />
     <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,7 +232,9 @@
     </Compile>
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Infrastructure\NinjectResolver.cs" />
+    <Compile Include="Login\TokenManager.cs" />
     <Compile Include="Models\CommentDTO.cs" />
+    <Compile Include="Models\LoginDTO.cs" />
     <Compile Include="Models\OrderDTO.cs" />
     <Compile Include="Models\OrderLineDTO.cs" />
     <Compile Include="Models\ProductDTO.cs" />
