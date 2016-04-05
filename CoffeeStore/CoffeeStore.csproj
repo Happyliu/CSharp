@@ -232,6 +232,7 @@
     </Compile>
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Infrastructure\NinjectResolver.cs" />
+    <Compile Include="Infrastructure\TokenAuthorizeAttribute.cs" />
     <Compile Include="Login\TokenManager.cs" />
     <Compile Include="Models\CommentDTO.cs" />
     <Compile Include="Models\LoginDTO.cs" />

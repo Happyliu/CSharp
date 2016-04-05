@@ -1,5 +1,6 @@
 ﻿using CoffeeStore.Domain.Abstract;
 using CoffeeStore.Domain.Entities;
+using CoffeeStore.Infrastructure;
 using CoffeeStore.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Web.Http;
 
 namespace CoffeeStore.Controllers
 {
+    [TokenAuthorize]
     [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
