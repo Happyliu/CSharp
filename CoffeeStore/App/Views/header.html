@@ -45,9 +45,12 @@
         </form>-->
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a id="loginBtn" ng-click="open()">
+                <a id="loginBtn" ng-click="open()" ng-show="UserInfo==undefined">
                     <span class="glyphicon glyphicon-log-in"></span>
                     Login
+                </a>
+                <a ng-hide="UserInfo==undefined">
+                    {{UserInfo.Username}}
                 </a>
             </li>
             <li class="dropdown" dropdown="">

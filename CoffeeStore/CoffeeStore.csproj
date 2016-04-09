@@ -178,6 +178,7 @@
     <Content Include="App\Controllers\productdetailcontroller.js" />
     <Content Include="App\Images\logo.PNG" />
     <Content Include="App\Index.html" />
+    <Content Include="App\Services\AuthService.js" />
     <Content Include="App\Services\menufactoryservice.js" />
     <Content Include="App\Views\footer.html" />
     <Content Include="App\Views\header.html" />
