@@ -19,8 +19,20 @@ namespace CoffeeStore.Infrastructure
         {
             try
             {
-                var queryString = actionContext.Request.GetQueryNameValuePairs().ToDictionary(x => x.Key, x => x.Value);
-                string token = queryString[_securityToken];
+                //Get Token from query string
+                //var queryString = actionContext.Request.GetQueryNameValuePairs().ToDictionary(x => x.Key, x => x.Value);
+                //string token = queryString[_securityToken];
+
+                //Get token from header
+                string token;
+                var headers = actionContext.Request.Headers;
+                if (headers.Contains("token"))
+                {
+                    token = headers.GetValues("token").First();
+                }
+                else {
+                    token = null;
+                }
 
                 return TokenManager.IsTokenValid(token);
             }

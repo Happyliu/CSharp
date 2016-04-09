@@ -26,5 +26,21 @@ namespace CoffeeStore.Controllers.api
             return TokenManager.IsTokenValid(token);
         }
 
+        [HttpGet]
+        public bool GetLogin()
+        {
+            var headers = Request.Headers;
+            string token;
+            if (headers.Contains("token"))
+            {
+                token = headers.GetValues("token").First();
+            }
+            else
+            {
+                token = null;
+            }
+            return TokenManager.IsTokenValid(token);
+        }
+
     }
 }

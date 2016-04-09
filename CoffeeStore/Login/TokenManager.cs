@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoffeeStore.Domain.Abstract;
+using CoffeeStore.Domain.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -9,6 +11,11 @@ namespace CoffeeStore.Login
 {
     public static class TokenManager
     {
+        private static ILoginRepository repository;
+        static TokenManager()
+        {
+            repository = new LoginRepository();
+        }
 
         private const string _alg = "HmacSHA256";
         private const string _salt = "rz8LuOtFBXphj9WQfvFh";
@@ -43,7 +50,7 @@ namespace CoffeeStore.Login
             }
         }
 
-        private const int _expirationMinutes = 10;
+        private const int _expirationMinutes = 1;
 
         public static bool IsTokenValid(string token)
         {
@@ -69,7 +76,10 @@ namespace CoffeeStore.Login
                     bool expired = Math.Abs((DateTime.UtcNow - timeStamp).TotalMinutes) > _expirationMinutes;
                     if (!expired)
                     {
-                        result = true;
+                        //find password for this user
+                        string password = repository.GetPassword(username);
+                        string computedToken = GenerateToken(username, password, "2323", "chrome", ticks);
+                        result = (token == computedToken);
                     }
 
                 }

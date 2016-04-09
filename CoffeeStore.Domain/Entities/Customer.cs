@@ -13,5 +13,7 @@ namespace CoffeeStore.Domain.Entities
         public string Cus_Phone { get; set; }
         public string Cus_Email { get; set; }
         public string Cus_Password { get; set; }
+        public bool IsGoogle { get; set; }
+        public bool IsFacebook { get; set; }
     }
 }
