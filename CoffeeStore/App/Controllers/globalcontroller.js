@@ -1,5 +1,9 @@
-﻿app.controller('GlobalController', ['$scope', 'authService', '$uibModal', '$log', '$state', function ($scope, authService, $uibModal, $log, $state) {
-    $scope.UserInfo = undefined;
+﻿app.controller('GlobalController', ['$scope', 'authService', '$uibModal', '$log', '$state', '$rootScope', '$timeout', function ($scope, authService, $uibModal, $log, $state, $rootScope, $timeout) {
+    $rootScope.user = {
+        'Username': undefined,
+        'Token': 'null',
+    };
+
     $scope.open = function () {
 
         var modalInstance = $uibModal.open({
@@ -9,8 +13,12 @@
         });
 
         modalInstance.result.then(function (result) {
-            $scope.UserInfo = result;
-            $state.go('app');
+            //need the timeout to set the value for rootscope user variable, then we refrash the page
+            $timeout(function () {
+                $rootScope.user.Username = localStorage.getItem("Username");
+                $rootScope.user.Token = localStorage.getItem("Token");
+                $state.go($state.current, {}, { reload: true });
+            }, 3000);
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -42,6 +50,7 @@ app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance
             function (data) {
                 $scope.result.Username = $scope.user.Username;
                 $scope.result.Token = data;
+                localStorage.setItem('Username', $scope.user.Username);
             },
             function (data) {
 

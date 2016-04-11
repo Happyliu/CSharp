@@ -1,6 +1,17 @@
 ﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ui.bootstrap', 'ngTable']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+
+    $httpProvider.interceptors.push(function () {
+        return {
+            // optional method
+            'request': function (config) {
+                // do something on success
+                config.headers['Token'] = localStorage.getItem('Token')
+                return config;
+            }
+        };
+    });
 
     $stateProvider
 

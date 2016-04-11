@@ -2,7 +2,7 @@
 
 angular.module('coffeeStoreApp')
             .service('authService', ['$http', '$q', function ($http, $q) {
-                var Local_Token_Key = 'mykey';
+                var Local_Token_Key = 'Token';
                 var isAuthenticated = false;
                 var username = "";
                 var authToken;
@@ -37,6 +37,7 @@ angular.module('coffeeStoreApp')
                 var login = function (user) {
                     var deferred = $q.defer();
                     $http.post('../api/login', user).success(function (data) {
+                        storeUserCredentials(data);
                         deferred.resolve(data);
                     });
                     return deferred.promise;
