@@ -44,14 +44,21 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>-->
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a id="loginBtn" ng-click="open()" ng-show="user.Username==undefined">
+            <li ng-show="user.Username==undefined">
+                <a id="loginBtn" ng-click="open()">
                     <span class="glyphicon glyphicon-log-in"></span>
                     Login
                 </a>
-                <a ng-hide="user.Username==undefined">
+            </li>
+            <li class="dropdown" ng-hide="user.Username==undefined" dropdown="">
+                <a href="#" class="dropdown-toggle" dropdown-toggle="" data-toggle="dropdown">
                     {{user.Username}}
                 </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a ng-click="logout()">Log Out</a>
+                    </li>
+                </ul>
             </li>
             <li class="dropdown" dropdown="">
                 <a href="#" class="dropdown-toggle" dropdown-toggle="" data-toggle="dropdown">

@@ -18,12 +18,18 @@
                 $rootScope.user.Username = localStorage.getItem("Username");
                 $rootScope.user.Token = localStorage.getItem("Token");
                 $state.go($state.current, {}, { reload: true });
-            }, 3000);
+            }, 2000);
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
+    $scope.logout = function () {
+        authService.logout();
+        window.localStorage.removeItem('Username');
+        $scope.user.Username = undefined;
+        $state.go($state.current, {}, { reload: true });
+    }
 
 }]);
 
