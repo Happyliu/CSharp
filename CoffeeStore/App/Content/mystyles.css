@@ -1,4 +1,20 @@
-﻿.row-header {
+﻿Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @Happyliu
+ Unwatch 1
+  Star 0
+  Fork 0 Happyliu/CSharp
+ Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathCSharp/CoffeeStore/App/Content/mystyles.css
+e43fd58  24 days ago
+@Happyliu Happyliu Fix some layout bug and change some folder structure
+1 contributor
+RawBlameHistory     102 lines (101 sloc)  1.82 KB
+.row-header {
   margin: 0px auto;
   padding: 0px 0px;
 }
@@ -14,7 +30,7 @@
   background-color: #AfAfAf;
 }
 .jumbotron {
-  margin: 0px auto;
+  margin: 0px auto 8px;
   padding: 70px 30px;
   background: #7986CB;
   color: floralwhite;
@@ -23,12 +39,12 @@
   background: #1a237e;
 }
 .carousel .item {
-  height: 300px;
+  height: 400px;
 }
 .carousel .item img {
   left: 0;
-  min-height: 300px;
-  position: absolute;
+  min-height: 400px;
+  position: center;
   top: 0;
 }
 .navbar-inverse {
@@ -99,3 +115,5 @@ body {
   position: absolute;
   right: 0px;
 }
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
