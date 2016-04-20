@@ -8,7 +8,7 @@ angular.module('coffeeStoreApp')
         $scope.showMenu = false;
         $scope.message = "Loading ... ";
         $scope.start = 0;
-        $scope.end = 5;
+        $scope.end = 6;
 
         menuFactory.getProducts().then(
             function (response) {
@@ -21,13 +21,17 @@ angular.module('coffeeStoreApp')
         );
 
         $scope.addFive = function () {
-            $scope.start += 5;
-            $scope.end += 5;
+            if ($scope.end < $scope.dishes.length) {
+                $scope.start += 6;
+                $scope.end += 6;
+            }
         }
 
         $scope.minusFive = function () {
-            $scope.start -= 5;
-            $scope.end -= 5;
+            if ($scope.start >= 6) {
+                $scope.start -= 6;
+                $scope.end -= 6;
+            }
         }
 
         $scope.select = function (setTab) {

@@ -24,7 +24,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <ul class="media-list tab-pane fade in active">
+                <!--<ul class="media-list tab-pane fade in active">
                     <li class="media" ng-repeat="dish in dishes | filter:filtText | slice:start:end">
                         <div class="media-left media-middle">
                             <a ui-sref="app.productdetails({id:dish.ProductID})">
@@ -40,7 +40,24 @@
                             <p ng-show="showDetails">{{dish.Description}}</p>
                         </div>
                     </li>
-                </ul>
+                </ul>-->
+
+                <div class="row">
+                    <div ng-repeat="dish in dishes | filter:filtText | slice:start:end">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img class="img-thumbnail" ng-src="data:image/JPEG;base64,{{dish.ImageData}}" alt="Uthappizza">
+                                <div class="caption">
+                                    {{dish.P_Name}}
+                                    <span class="label label-danger label-xs">{{dish.Label}}</span>
+                                    <span class="badge">{{dish.P_Price | currency}}</span>
+                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
                     <div class="btn-group" role="group">

@@ -1,20 +1,4 @@
-﻿Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @Happyliu
- Unwatch 1
-  Star 0
-  Fork 0 Happyliu/CSharp
- Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathCSharp/CoffeeStore/App/Content/mystyles.css
-e43fd58  24 days ago
-@Happyliu Happyliu Fix some layout bug and change some folder structure
-1 contributor
-RawBlameHistory     102 lines (101 sloc)  1.82 KB
-.row-header {
+﻿.row-header {
   margin: 0px auto;
   padding: 0px 0px;
 }
@@ -36,7 +20,7 @@ RawBlameHistory     102 lines (101 sloc)  1.82 KB
   color: floralwhite;
 }
 .carousel {
-  background: #1a237e;
+  /*background: #1a237e;*/
 }
 .carousel .item {
   height: 400px;
@@ -115,5 +99,12 @@ body {
   position: absolute;
   right: 0px;
 }
-Status API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Contact Help
+/*.thumbnail{        
+    height: 500px;
+    overflow: auto;
+}*/
+
+.thumbnail img{
+    height: 200px;
+    width:242px;
+}
