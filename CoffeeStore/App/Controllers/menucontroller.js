@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('coffeeStoreApp')
-    .controller('MenuController', ['$scope', 'menuFactory', 'ngTableParams', function ($scope, menuFactory, ngTableParams) {
+    .controller('MenuController', ['$scope', 'menuFactory', 'cartservice', 'ngTableParams', function ($scope, menuFactory, cartservice, ngTableParams) {
         $scope.tab = 1;
         $scope.filtText = "";
         $scope.showDetails = false;
@@ -57,6 +57,16 @@ angular.module('coffeeStoreApp')
         $scope.toggleDetails = function () {
             $scope.showDetails = !$scope.showDetails;
         };
+
+        $scope.addItem = function (id, name, qty, price) {
+            cartservice.addItem(id, name, qty, price);
+            console.log(this.getItems());
+        }
+
+        $scope.getItems = function () {
+            return cartservice.getItems();
+        }
+
     }])
 
     .filter('slice', function () {
