@@ -13,6 +13,11 @@ angular.module('coffeeStoreApp')
         menuFactory.getProducts().then(
             function (response) {
                 $scope.dishes = response;
+                if ($scope.dishes.length > 0) {
+                    angular.forEach($scope.dishes, function (value) {
+                        value.qty = 1;
+                    });
+                }
                 $scope.showMenu = true;
             },
             function (response) {
@@ -58,14 +63,7 @@ angular.module('coffeeStoreApp')
             $scope.showDetails = !$scope.showDetails;
         };
 
-        $scope.addItem = function (id, name, qty, price) {
-            cartservice.addItem(id, name, qty, price);
-            console.log(this.getItems());
-        }
-
-        $scope.getItems = function () {
-            return cartservice.getItems();
-        }
+        $scope.Selectvalues = [1, 2, 3, 4, 5];
 
     }])
 

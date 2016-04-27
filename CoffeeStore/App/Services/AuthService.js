@@ -4,30 +4,37 @@ angular.module('coffeeStoreApp')
             .service('authService', ['$http', '$q', function ($http, $q) {
                 var Local_Token_Key = 'Token';
                 var isAuthenticated = false;
-                var username = "";
+                var userKey = "username";
                 var authToken;
+                var username;
 
                 function loadUserCredentials() {
                     var token = window.localStorage.getItem(Local_Token_Key);
-                    if (token) {
-                        useCredentials(token);
+                    var user = window.localStorage.getItem(userKey);
+                    if (token && user) {
+                        useCredentials(token, user);
                     }
                 }
 
-                function storeUserCredentials(token) {
+                function storeUserCredentials(token, username) {
                     window.localStorage.setItem(Local_Token_Key, token);
+                    window.localStorage.setItem(userKey, username);
+                    isAuthenticated = true;
+                    loadUserCredentials();
                 }
 
-                function useCredentials(token) {
-                    isAuthenticated = false;
+                function useCredentials(token, user) {
+                    isAuthenticated = true;
                     authToken = token;
+                    username = user;
+
                 }
 
                 function destoryUserCredentials() {
                     authToken = undefined;
                     isAuthenticated = false;
-
                     window.localStorage.removeItem(Local_Token_Key);
+                    window.localStorage.removeItem(userKey);
                 }
 
                 var register = function (user) {
@@ -37,7 +44,7 @@ angular.module('coffeeStoreApp')
                 var login = function (user) {
                     var deferred = $q.defer();
                     $http.post('../api/login', user).success(function (data) {
-                        storeUserCredentials(data);
+                        storeUserCredentials(data, user.Username);
                         deferred.resolve(data);
                     });
                     return deferred.promise;
@@ -47,13 +54,23 @@ angular.module('coffeeStoreApp')
                     destoryUserCredentials();
                 }
 
+                var getAuthInfo = function () {
+                    var authInfo = {
+                        user: "",
+                        isAuthenticated: ""
+                    };
+                    authInfo.user = username;
+                    authInfo.isAuthenticated = isAuthenticated;
+                    return authInfo;
+                }
+
                 loadUserCredentials();
 
                 return {
                     login: login,
                     register: register,
                     logout: logout,
-                    isAuthenticated: function () { return isAuthenticated; },
+                    getAuthInfo: getAuthInfo,
                 };
 
             }]);
