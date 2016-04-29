@@ -40,6 +40,10 @@
         return cartservice.getItems();
     }
 
+    $scope.clearCart = function () {
+        return cartservice.clearCart();
+    }
+
 }]);
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.

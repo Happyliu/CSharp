@@ -44,28 +44,35 @@ angular.module('coffeeStoreApp')
 
             }])
             .service('cartservice', ['$http', '$q', function ($http, $q) {
-                var shoppingCart = {
-                    userId: null,
-                    storeId: null,
-                    totalPrice: null,
-                    orderTime: null,
-                    pickUp: false,
-                    puckupTime: null,
-                    status: null,
-                    items: {}
-                };
+                var shoppingCart;
+                var cartKey = "cart";
 
                 function init() {
-                    this.shoppingCart = {
-                        userId: null,
-                        storeId: null,
-                        totalPrice: null,
-                        orderTime: null,
-                        pickUp: false,
-                        puckupTime: null,
-                        status: null,
-                        items: []
-                    };
+                    if (window.localStorage.getItem(cartKey) === null) {
+                        shoppingCart = {
+                            userId: "",
+                            storeId: "",
+                            totalPrice: "",
+                            orderTime: "",
+                            pickUp: false,
+                            puckupTime: "",
+                            status: "",
+                            items: []
+                        };
+                        window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                    } else {
+                        shoppingCart = JSON.parse(window.localStorage.getItem(cartKey));
+                    }
+                }
+
+                function saveChange() {
+                    window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                }
+
+                function clearCart() {
+                    if (window.localStorage.getItem(cartKey) !== null) {
+                        window.localStorage.removeItem(cartKey);
+                    }
                 }
 
                 function cartItem(id, name, qty, price) {
@@ -79,21 +86,42 @@ angular.module('coffeeStoreApp')
                 }
 
                 function addItem(id, name, qty, price) {
+                    if (window.localStorage.getItem(cartKey) === null)
+                        init();
                     var newItem = cartItem(id, name, qty, price);
-                    if (newItem.id in shoppingCart.items) {
-                        shoppingCart.items[newItem.id].qty += newItem.qty;
+                    var curItem = itemExist(newItem);
+                    if (curItem !== null) {
+                        curItem.qty += newItem.qty;
                     } else {
-                        shoppingCart.items[newItem.id] = newItem;
+                        shoppingCart.items.push(newItem);
                     }
+                    saveChange();
+                    console.log(shoppingCart);
+                }
+
+                function itemExist(item) {
+                    var items = shoppingCart.items;
+                    for (var curItem in items) {
+                        if (curItem.id === item.id)
+                            return curItem;
+                    }
+                    return null;
                 }
 
                 function getItems() {
-                    return shoppingCart.items;
+                    var items = JSON.parse(window.localStorage.getItem(cartKey));
+                    if (items !== null || items !== undefined)
+                        return items.items;
+                    else
+                        return null;
                 }
+
+                init();
 
                 return {
                     addItem: addItem,
-                    getItems: getItems
+                    getItems: getItems,
+                    clearCart: clearCart
                 }
 
             }]);
