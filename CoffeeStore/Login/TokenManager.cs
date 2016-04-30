@@ -50,7 +50,7 @@ namespace CoffeeStore.Login
             }
         }
 
-        private const int _expirationMinutes = 1;
+        private const int _expirationMinutes = 5;
 
         public static bool IsTokenValid(string token)
         {
