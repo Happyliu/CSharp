@@ -4,6 +4,7 @@
 
     //using watch to make sure when user login change the value for current and isAuthenticated, the third value for the watch function is to watch an object
     $scope.$watch('service.getAuthInfo()', function (authInfo) {
+        console.log("hell1o");
         $scope.currentUser = authInfo.user;
         $scope.isAuthenticated = authInfo.isAuthenticated;
     }, true);
@@ -31,9 +32,15 @@
         $state.go($state.current, {}, { reload: true });
     }
 
+    $scope.cartService = cartservice;
+    $scope.items = [];
+    $scope.toggled = function (open) {
+        $scope.items = cartservice.getItems();
+    };
+
     $scope.addItem = function (id, name, qty, price) {
         cartservice.addItem(id, name, qty, price);
-        $log.info(this.getItems());
+        //$log.info(this.getItems());
     }
 
     $scope.getItems = function () {
@@ -41,6 +48,7 @@
     }
 
     $scope.clearCart = function () {
+        $scope.items = [];
         return cartservice.clearCart();
     }
 

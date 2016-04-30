@@ -50,13 +50,13 @@ angular.module('coffeeStoreApp')
                 function init() {
                     if (window.localStorage.getItem(cartKey) === null) {
                         shoppingCart = {
-                            userId: "",
-                            storeId: "",
-                            totalPrice: "",
-                            orderTime: "",
-                            pickUp: false,
-                            puckupTime: "",
-                            status: "",
+                            //userId: "user",
+                            //storeId: "store",
+                            //totalPrice: "das",
+                            //orderTime: "asd",
+                            //pickUp: false,
+                            //puckupTime: "asd",
+                            //status: "sad",
                             items: []
                         };
                         window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
@@ -101,19 +101,27 @@ angular.module('coffeeStoreApp')
 
                 function itemExist(item) {
                     var items = shoppingCart.items;
-                    for (var curItem in items) {
-                        if (curItem.id === item.id)
-                            return curItem;
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].id === item.id)
+                            return items[i];
                     }
                     return null;
                 }
 
                 function getItems() {
                     var items = JSON.parse(window.localStorage.getItem(cartKey));
-                    if (items !== null || items !== undefined)
+                    if (items !== undefined && items !== null)
                         return items.items;
                     else
                         return null;
+                }
+
+                var itemsChange = function () {
+                    var curItemNumber = -1;
+                    var items = JSON.parse(window.localStorage.getItem(cartKey));
+                    if (items.length > curItemNumber)
+                        curItemNumber = items.length;
+                    return curItemNumber;
                 }
 
                 init();
@@ -121,7 +129,8 @@ angular.module('coffeeStoreApp')
                 return {
                     addItem: addItem,
                     getItems: getItems,
-                    clearCart: clearCart
+                    clearCart: clearCart,
+                    itemsChange: itemsChange,
                 }
 
             }]);

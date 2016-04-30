@@ -54,22 +54,21 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown" dropdown="">
-                <a href="#" class="dropdown-toggle" dropdown-toggle="" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> 7 - Items<span class="caret"></span>
+            <!--using angularjs bootstrap ui to make sure using the toggled method that update the items-->
+            <li uib-dropdown on-toggle="toggled()">
+                <a href="#" id="simple-dropdown" uib-dropdown-toggle>
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span>{{cartService.getItems().length}} - Items</span>
+                    <!--<span ng-show="items.length===0">{{cartService.getItems().length}} - Items</span>-->
+                    <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a ng-click="clearCart()">Action</a>
+                <ul class="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+                    <li ng-repeat="item in items">
+                        <p>{{item.name}} {{item.qty}}</p>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        <a href="#">Another action</a>
-                    </li>
-                    <li>
-                        <a href="#">Something else here</a>
-                    </li>
-                    <li>
-                        <a href="#">Separated link</a>
+                        <a ng-click="clearCart()">Clear Cart</a>
                     </li>
                 </ul>
             </li>
