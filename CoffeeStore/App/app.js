@@ -54,6 +54,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $htt
         }
     })
 
+    //route for cartsummary page
+    .state('app.cartsummary', {
+        url: 'cartsummary',
+        views: {
+            'content@': {
+                templateUrl: 'views/cartsummary.html',
+                controller: 'CartSummaryController'
+            }
+        }
+    })
+
     //route for dishdetail page
     .state('app.productdetails', {
         url: 'menu/:id',

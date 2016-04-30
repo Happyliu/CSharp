@@ -172,15 +172,18 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Content\mystyles.css" />
+    <Content Include="App\Controllers\CartSummaryController.js" />
     <Content Include="App\Controllers\globalcontroller.js" />
     <Content Include="App\Controllers\homecontroller.js" />
     <Content Include="App\Controllers\menucontroller.js" />
     <Content Include="App\Controllers\productdetailcontroller.js" />
+    <Content Include="App\Directive\cartsummarytabledirectivetemplate.html" />
     <Content Include="App\Images\logo.PNG" />
     <Content Include="App\Index.html" />
     <Content Include="App\Services\AuthService.js" />
     <Content Include="App\Services\cartservice.js" />
     <Content Include="App\Services\menufactoryservice.js" />
+    <Content Include="App\Views\cartsummary.html" />
     <Content Include="App\Views\footer.html" />
     <Content Include="App\Views\header.html" />
     <Content Include="App\Views\home.html" />
@@ -262,7 +265,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Directive\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

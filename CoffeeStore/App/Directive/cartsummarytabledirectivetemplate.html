@@ -1,0 +1,32 @@
+﻿<div>
+    <p ng-show="cartItems.length===0">this is a cart summary table</p>
+    <div ng-show="cartItems.length!==0">
+        <table class="table table-striped table-condensed table-borderd">
+            <tr>
+                <td align="center">Shopping Cart</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td align="center">Quatity</td>
+            </tr>
+            <tr ng-repeat="item in cartItems">
+                <td align="center">
+                    <a ui-sref="app.productdetails({id:item.id})">
+                        <img ng-src="data:image/JPEG;base64,{{item.image}}" alt="Uthappizza" height="90" width="90">
+                    </a>
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency}}</td>
+                <td align="center">{{item.qty}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td align="center">
+                    <p>Subtotal({{cartItems.length}} Items): </p>
+                    {{totalPrice | currency}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
