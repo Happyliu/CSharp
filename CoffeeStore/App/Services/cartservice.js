@@ -111,6 +111,24 @@ angular.module('coffeeStoreApp')
                     return null;
                 }
 
+                function minusQuantity(id) {
+                    angular.forEach(shoppingCart.items, function (value, key) {
+                        if (value.id === id) {
+                            if (value.qty > 1) {
+                                value.qty -= 1;
+                            } else {
+                                removeItem(key);
+                            }
+                        }
+                        return;
+                    });
+                    saveChange();
+                }
+
+                function removeItem(key) {
+                    shoppingCart.items.splice(key, 1);
+                }
+
                 function getItems() {
                     var items = JSON.parse(window.localStorage.getItem(cartKey));
                     if (items !== undefined && items !== null)
@@ -149,6 +167,7 @@ angular.module('coffeeStoreApp')
                     getItems: getItems,
                     clearCart: clearCart,
                     getTotalPrice: getTotalPrice,
+                    minusQuantity: minusQuantity
                 }
 
             }]);

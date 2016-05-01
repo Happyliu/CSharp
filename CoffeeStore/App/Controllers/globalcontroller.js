@@ -51,6 +51,7 @@
         cartservice.clearCart();
         $state.go($state.current, {}, { reload: true });
     }
+    $scope.state = $state;
 
 }]);
 

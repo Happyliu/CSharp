@@ -2,7 +2,8 @@
     <div class="row" ng-controller="CartSummaryController">
         <div class="col-md-9 col-xs-12">
             <!--pass the items value to the directive template cartItems should be cart-items in here-->
-            <cart-summary-table cart-items="items" total-price="totalPrice"></cart-summary-table>
+            <!--<cart-summary-table cart-items="items" total-price="totalPrice" service="service"></cart-summary-table>-->
+            <cart-summary-table cart-summary-data="cartSummaryData"></cart-summary-table>
         </div>
         <div class="col-md-3 col-xs-12">
             <a type="button" class="btn btn-default btn-lg btn-block" ui-sref="app.menu">Back To Menu</a>

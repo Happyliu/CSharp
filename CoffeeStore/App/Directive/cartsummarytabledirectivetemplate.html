@@ -1,6 +1,6 @@
 ﻿<div>
-    <p ng-show="cartItems.length===0">this is a cart summary table</p>
-    <div ng-show="cartItems.length!==0">
+    <p ng-show="cartSummaryData.items.length===0">You have no Items in shopping cart</p>
+    <div ng-show="cartSummaryData.items.length!==0">
         <table class="table table-striped table-condensed table-borderd">
             <tr>
                 <td align="center">Shopping Cart</td>
@@ -8,7 +8,7 @@
                 <td>Price</td>
                 <td align="center">Quatity</td>
             </tr>
-            <tr ng-repeat="item in cartItems">
+            <tr ng-repeat="item in cartSummaryData.items">
                 <td align="center">
                     <a ui-sref="app.productdetails({id:item.id})">
                         <img ng-src="data:image/JPEG;base64,{{item.image}}" alt="Uthappizza" height="90" width="90">
@@ -16,15 +16,23 @@
                 </td>
                 <td>{{item.name}}</td>
                 <td>{{item.price | currency}}</td>
-                <td align="center">{{item.qty}}</td>
+                <td align="center">
+                    <a ng-click="cartSummaryData.minusOneQty(item.id, item.qty)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </a>
+                    {{item.qty}}
+                    <a ng-click="cartSummaryData.addOneQty(item.id,item.name,1,item.price,item.image)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td align="center">
-                    <p>Subtotal({{cartItems.length}} Items): </p>
-                    {{totalPrice | currency}}
+                    <p>Subtotal({{cartSummaryData.items.length}} Items): </p>
+                    {{cartSummaryData.totalPrice | currency}}
                 </td>
             </tr>
         </table>
