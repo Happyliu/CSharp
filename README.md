@@ -19,3 +19,10 @@ Redis
 
 Data Access Layer
 Entity Framework, and Repository
+
+Right Now, this is just beginning. I will keep doing this and see its grow.
+Deploy the Site on Azure
+Site:http://coffeestore.azurewebsites.net/App/
+UserName: Zhao Liu 
+Password: 123
+
