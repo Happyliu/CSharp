@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Dependencies;
 using Ninject.Web.Common;
+using CoffeeStore.Domain.Cache;
 
 namespace CoffeeStore.Infrastructure
 {
@@ -45,6 +46,7 @@ namespace CoffeeStore.Infrastructure
             kernel.Bind<ICommentRepository>().To<CommentRepository>().InRequestScope();
             kernel.Bind<IOrderRepository>().To<OrderRepository>().InRequestScope();
             kernel.Bind<ILoginRepository>().To<LoginRepository>().InRequestScope();
+            kernel.Bind<ICache>().To<RedisCache>().InRequestScope();
         }
     }
 }

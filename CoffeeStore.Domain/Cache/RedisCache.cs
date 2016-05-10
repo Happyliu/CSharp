@@ -1,5 +1,11 @@
 ﻿using Newtonsoft.Json;
 using StackExchange.Redis;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CoffeeStore.Domain.Cache
 {
@@ -30,6 +36,17 @@ namespace CoffeeStore.Domain.Cache
             {
                 return (T)null;
             }
+        }
+
+        public IList<RedisKey> GetAllKeys(string pattenstring)
+        {
+            var keys = this.redisConnections.GetServer("localhost", 6379).Keys(pattern: pattenstring);
+            return keys.ToList();
+        }
+
+        public IList<EndPoint> GetEndPoints()
+        {
+            return this.redisConnections.GetEndPoints().ToList();
         }
     }
 }
