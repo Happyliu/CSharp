@@ -14,6 +14,7 @@ angular.module('coffeeStoreApp')
                     if (token && user) {
                         useCredentials(token, user);
                     }
+                    console.log("auth service start");
                 }
 
                 function storeUserCredentials(token, username) {
@@ -57,10 +58,12 @@ angular.module('coffeeStoreApp')
                 var getAuthInfo = function () {
                     var authInfo = {
                         user: "",
-                        isAuthenticated: ""
+                        isAuthenticated: "",
+                        authToken: "",
                     };
                     authInfo.user = username;
                     authInfo.isAuthenticated = isAuthenticated;
+                    authInfo.authToken = authToken;
                     return authInfo;
                 }
 

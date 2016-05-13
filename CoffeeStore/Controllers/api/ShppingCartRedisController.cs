@@ -53,5 +53,11 @@ namespace CoffeeStore.Controllers.api
             return result;
         }
 
+        [HttpPost]
+        public void PostDeletKey([FromUri] string key)
+        {
+            redisCache.DeleteKey(key);
+        }
+
     }
 }

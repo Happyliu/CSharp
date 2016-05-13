@@ -48,5 +48,13 @@ namespace CoffeeStore.Domain.Cache
         {
             return this.redisConnections.GetEndPoints().ToList();
         }
+
+        public void DeleteKey(string key)
+        {
+            IDatabase db = this.redisConnections.GetDatabase();
+            var redisObject = db.StringGet(key);
+            if (redisObject.HasValue)
+                db.KeyDelete(key);
+        }
     }
 }

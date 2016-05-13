@@ -43,38 +43,93 @@ angular.module('coffeeStoreApp')
                 return item;
 
             }])
-            .service('cartservice', ['$http', '$q', function ($http, $q) {
-                var shoppingCart;
+            .service('cartservice', ['$http', '$q', 'authService', function ($http, $q, authService) {
+                var shoppingCart = {
+                    items: []
+                };;
                 var cartKey = "cart";
+                var username = "";
+                var authToken = "";
 
                 function init() {
-                    if (window.localStorage.getItem(cartKey) === null) {
-                        shoppingCart = {
-                            //userId: "user",
-                            //storeId: "store",
-                            //totalPrice: "das",
-                            //orderTime: "asd",
-                            //pickUp: false,
-                            //puckupTime: "asd",
-                            //status: "sad",
-                            items: []
-                        };
-                        window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                    if (authService.getAuthInfo().user !== undefined && authService.getAuthInfo().user !== "" && authService.getAuthInfo().authToken !== "" && authService.getAuthInfo().authToken !== undefined) {
+                        username = authService.getAuthInfo().user;
+                        authToken = authService.getAuthInfo().authToken;
+                        getShoppingCartFromRedis(username).then(function (data) {
+                            window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                        });
                     } else {
-                        shoppingCart = JSON.parse(window.localStorage.getItem(cartKey));
+                        if (window.localStorage.getItem(cartKey) === null) {
+                            shoppingCart = {
+                                items: []
+                            };
+                            window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                        } else {
+                            shoppingCart = JSON.parse(window.localStorage.getItem(cartKey));
+                        }
                     }
+
+                    //if (window.localStorage.getItem(cartKey) === null) {
+                    //    shoppingCart = {
+                    //        items: []
+                    //    };
+                    //    if (username !== "" && authToken !== "") {
+                    //        getShoppingCartFromRedis(username);
+                    //    }
+                    //    window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                    //} else {
+                    //    shoppingCart = JSON.parse(window.localStorage.getItem(cartKey));
+                    //}
+                    console.log("cart service start");
+                }
+
+                function getShoppingCartFromRedis(username) {
+                    var deferred = $q.defer();
+                    $http({
+                        method: "GET",
+                        url: "../api/ShppingCartRedis?username=" + username,
+                        headers: { 'Content-type': 'application/json' }
+                    }).success(function (data) {
+                        shoppingCart.items = data.cart;
+                        console.log(shoppingCart.items);
+                        deferred.resolve(data);
+                    })
+                    return deferred.promise;
                 }
 
                 function saveChange() {
                     window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                    if (authService.getAuthInfo().user !== "" && authService.getAuthInfo().authToken !== "") {
+                        username = authService.getAuthInfo().user;
+                        authToken = authService.getAuthInfo().authToken;
+                        saveChangeToRedis(authService.getAuthInfo().user, authService.getAuthInfo().authToken);
+                    }
+                }
+
+                function saveChangeToRedis(user, authToken) {
+                    var postdata = {
+                        userName: username,
+                        token: authToken,
+                        cart: shoppingCart.items
+                    };
+                    $http.post('../api/ShppingCartRedis', postdata).success(function (data) {
+                        console.log("save shopping cart to redis");
+                    });
                 }
 
                 function clearCart() {
                     if (window.localStorage.getItem(cartKey) !== null) {
                         shoppingCart.items = [];
                         window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
-                        //window.localStorage.removeItem(cartKey);
+                        if (username !== "" && authToken !== "")
+                            clearCartInRedis(username);
                     }
+                }
+
+                function clearCartInRedis(username) {
+                    $http.post('../api/ShppingCartRedis' + '?key=' + username).success(function (data) {
+                        console.log("clear the cart in redis");
+                    });
                 }
 
                 function cartItem(id, name, qty, price, image) {
@@ -167,7 +222,8 @@ angular.module('coffeeStoreApp')
                     getItems: getItems,
                     clearCart: clearCart,
                     getTotalPrice: getTotalPrice,
-                    minusQuantity: minusQuantity
+                    minusQuantity: minusQuantity,
+                    init: init
                 }
 
             }]);

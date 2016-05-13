@@ -14,5 +14,6 @@ namespace CoffeeStore.Domain.Cache
         T Get<T>(string key) where T : class;
         IList<RedisKey> GetAllKeys(string patten);
         IList<EndPoint> GetEndPoints();
+        void DeleteKey(string key);
     }
 }

@@ -19,6 +19,7 @@
         modalInstance.result.then(function (result) {
             //need the timeout to set the value for rootscope user variable, then we refrash the page
             $timeout(function () {
+                cartservice.init();
                 $state.go($state.current, {}, { reload: true });
             }, 2000);
         }, function () {
@@ -39,7 +40,6 @@
 
     $scope.addItem = function (id, name, qty, price, image) {
         cartservice.addItem(id, name, qty, price, image);
-        //$log.info(this.getItems());
     }
 
     $scope.getItems = function () {
