@@ -46,7 +46,7 @@ angular.module('coffeeStoreApp')
             .service('cartservice', ['$http', '$q', 'authService', function ($http, $q, authService) {
                 var shoppingCart = {
                     items: []
-                };;
+                };
                 var cartKey = "cart";
                 var username = "";
                 var authToken = "";
@@ -64,6 +64,7 @@ angular.module('coffeeStoreApp')
                                 items: []
                             };
                             window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
+                            console.log("this time" + shoppingCart);
                         } else {
                             shoppingCart = JSON.parse(window.localStorage.getItem(cartKey));
                         }
@@ -193,10 +194,11 @@ angular.module('coffeeStoreApp')
                 }
 
                 function getTotalPrice() {
-                    if (shoppingCart.items.length === 0)
+                    var curcart = JSON.parse(window.localStorage.getItem(cartKey));
+                    if (curcart.items.length === 0)
                         return 0;
                     else
-                        return priceCalculate(shoppingCart.items);
+                        return priceCalculate(curcart.items);
                 }
 
                 function priceCalculate(items) {

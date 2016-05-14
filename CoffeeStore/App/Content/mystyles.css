@@ -1,4 +1,8 @@
-﻿.row-header {
+﻿.container.minheightcontainer{
+    padding: 50px 0px;
+    min-height:600px;
+}
+.row-header {
   margin: 0px auto;
   padding: 0px 0px;
 }
@@ -20,7 +24,7 @@
   color: floralwhite;
 }
 .carousel {
-  /*background: #1a237e;*/
+  background: #1a237e;
 }
 .carousel .item {
   height: 400px;

@@ -1,5 +1,5 @@
-﻿<div class="container">
-    <div class="row" ng-controller="CartSummaryController">
+﻿<div class="container minheightcontainer" ng-controller="CartSummaryController">
+    <div class="row">
         <div class="col-md-9 col-xs-12">
             <!--pass the items value to the directive template cartItems should be cart-items in here-->
             <!--<cart-summary-table cart-items="items" total-price="totalPrice" service="service"></cart-summary-table>-->
@@ -8,8 +8,25 @@
         <div class="col-md-3 col-xs-12">
             <a type="button" class="btn btn-default btn-lg btn-block" ui-sref="app.menu">Back To Menu</a>
             <button type="button" class="btn btn-default btn-lg btn-block">Apply Coupon</button>
-            <button type="button" class="btn btn-warning btn-lg btn-block">Check Out</button>
+            <a type="button" class="btn btn-warning btn-lg btn-block" ui-sref="app.checkout">Check Out</a>
         </div>
     </div>
-
+    <form class="form-inline" ng-show="cartSummaryData.items.length">
+        <label>Need PickUp </label>
+        <input type="checkbox" ng-model="pickUp"></label>
+        <p ng-show="pickUp">Choose your pick up time: </p>
+    </form>
+    <div class="row" ng-show="pickUp">
+        <div class="col-md-3 col-xs-12" style="margin-top:32px">
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+        </div>
+        <div class="col-md-3 col-xs-12">
+            <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+        </div>
+    </div>
 </div>

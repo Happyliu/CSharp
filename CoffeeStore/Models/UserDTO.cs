@@ -22,12 +22,14 @@ namespace CoffeeStore.Models
     {
         public int id;
         public string name;
+        public int price;
         public int qty;
 
-        public ItemDTO(int id, string name, int qty)
+        public ItemDTO(int id, string name, int price, int qty)
         {
             this.id = id;
             this.name = name;
+            this.price = price;
             this.qty = qty;
         }
     }

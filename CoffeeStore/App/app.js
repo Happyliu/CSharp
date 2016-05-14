@@ -65,6 +65,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $htt
         }
     })
 
+    //route for checkout page
+    .state('app.checkout', {
+        url: 'checkout',
+        views: {
+            'content@': {
+                templateUrl: 'views/checkout.html',
+                controller: 'CheckController'
+            }
+        }
+    })
+
     //route for dishdetail page
     .state('app.productdetails', {
         url: 'menu/:id',
