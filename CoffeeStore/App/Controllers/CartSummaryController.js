@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('coffeeStoreApp')
-    .controller('CartSummaryController', ['$scope', function ($scope) {
+    .controller('CartSummaryController', ['$scope', '$uibModal', '$log', '$state', '$timeout', function ($scope, $uibModal, $log, $state, $timeout) {
         //get shopping cart items from global conteoller
         var items = $scope.$parent.cartService.getItems();
         var totalPrice = $scope.$parent.cartService.getTotalPrice();
@@ -24,6 +24,36 @@ angular.module('coffeeStoreApp')
             minusOneQty: minusOneQty
         };
         $scope.pickUp = false;
+        $scope.openLoginModel = function () {
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'Views/loginmodal.html',
+                controller: 'ModalInstanceCtrl'
+            });
+
+            modalInstance.result.then(function (result) {
+                //need the timeout to set the value for rootscope user variable, then we refrash the page
+                $timeout(function () {
+                    $scope.$parent.cartService.init();
+                    $state.go('app.checkout', {}, { reload: true });
+                }, 2000);
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+        $scope.checkout = function () {
+            var authInfo = $scope.$parent.service.getAuthInfo();
+            if ((authInfo.user === "" && authInfo.authToken === "") || (authInfo.user === undefined && authInfo.authToken === undefined)) {
+                $scope.openLoginModel();
+            } else {
+                if ($scope.$parent.service.checkValidToken()) {
+                    $state.go('app.checkout', {}, { reload: true });
+                } else {
+                    $scope.openLoginModel();
+                }
+            }
+        }
 
         //uil date picker control
         $scope.today = function () {

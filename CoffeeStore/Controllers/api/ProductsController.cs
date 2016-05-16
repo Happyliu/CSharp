@@ -15,7 +15,7 @@ using System.Web.Http;
 
 namespace CoffeeStore.Controllers
 {
-    [TokenAuthorize]
+    //[TokenAuthorize]
     [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {

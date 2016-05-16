@@ -67,6 +67,28 @@ angular.module('coffeeStoreApp')
                     return authInfo;
                 }
 
+                var checkTokenFromServer = function () {
+                    var deferred = $q.defer();
+                    $http({
+                        method: "GET",
+                        url: "../api/login",
+                        headers: { 'Content-type': 'application/json' }
+                    }).success(function (data) {
+                        deferred.resolve(data);
+                    });
+                    return deferred.promise;
+                }
+
+                var checkValidToken = function () {
+                    if ((username === undefined && authToken === undefined) || (username === "" && authToken === ""))
+                        return false;
+                    else {
+                        return checkTokenFromServer().then(function (data) {
+                            return data;
+                        });
+                    }
+                }
+
                 loadUserCredentials();
 
                 return {
@@ -74,6 +96,7 @@ angular.module('coffeeStoreApp')
                     register: register,
                     logout: logout,
                     getAuthInfo: getAuthInfo,
+                    checkValidToken: checkValidToken,
                 };
 
             }]);

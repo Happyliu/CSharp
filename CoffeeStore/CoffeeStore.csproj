@@ -177,7 +177,7 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Content\mystyles.css" />
-    <Content Include="App\Controllers\CartSummaryController.js" />
+    <Content Include="App\Controllers\cartsummarycontroller.js" />
     <Content Include="App\Controllers\checkcontroller.js" />
     <Content Include="App\Controllers\globalcontroller.js" />
     <Content Include="App\Controllers\homecontroller.js" />
