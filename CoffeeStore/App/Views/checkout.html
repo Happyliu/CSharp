@@ -1,5 +1,91 @@
 ﻿<div class="container minheightcontainer" ng-controller="CheckController">
     <div class="row">
-        this is check out page
+        <form class="form-horizontal" role="form" name="checkoutForm" ng-submit="checkout()" novalidate>
+            <div class="col-md-9 col-xs-12">
+                <div class="form-group col-xs-12">
+                    <label><h2>Enter Your Personal Infomation: </h2></label><br />
+                    <label><h4>Same with my profile</h4></label>
+                    <input type="checkbox" />
+                </div>
+                <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error':checkoutForm.firstName.$error.required && !checkoutForm.firstName.$pristine}">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" ng-model="checkout.firstName" required />
+                    <span ng-show="checkoutForm.firstName.$error.required && !checkoutForm.firstName.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" ng-model="checkout.lastName" required />
+                    <span ng-show="checkoutForm.lastName.$error.required && !checkoutForm.lastName.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error has-feedback':checkoutForm.email.$invalid && !checkoutForm.email.$pristine}">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" ng-model="checkout.email" required />
+                    <span ng-show="checkoutForm.email.$invalid && !checkoutForm.email.$pristine" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    <span ng-show="checkoutForm.email.$invalid && !checkoutForm.email.$pristine" class="help-block">
+                        Enter a valid email address
+                    </span>
+                    <span ng-show="checkoutForm.emailid.$error.required && !checkoutForm.emailid.$pristine" class="help-block">
+                        Enter a valid email address
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+                    <span ng-show="checkoutForm.phoneNumber.$error.required && !checkoutForm.phoneNumber.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label><h2>Enter Your Address Infomation: </h2></label><br />
+                    <label><h4>Use default address</h4></label>
+                    <input type="checkbox" />
+                </div>
+                <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error has-feedback':checkoutForm.addrline1.$invalid && !checkoutForm.addrline1.$pristine}">
+                    <label for="addrline1">Address Line1:</label>
+                    <input type="text" class="form-control" id="addrline1" name="addrline1" placeholder="Street address, P.O. box, company name, c/o " ng-model="checkout.addrline1" ng-maxlength="10" required />
+                    <span ng-show="(checkoutForm.addrline1.$error.maxlength || heckoutForm.addrline1.$error.required) && !checkoutForm.addrline1.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error has-feedback':checkoutForm.addrline2.$invalid && !checkoutForm.addrline2.$pristine}">
+                    <label for="addrline2">Address Line2:</label>
+                    <input type="text" class="form-control" id="addrline2" name="addrline2" placeholder="Apartment, suite, unit, building, floor, etc. " ng-model="checkout.addrline2" ng-maxlength="10" />
+                    <span ng-show="checkoutForm.addrline2.$error.maxlength && !checkoutForm.addrline2.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" />
+                    <span ng-show="checkoutForm.city.$error.required && !checkoutForm.city.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="state">State:</label>
+                    <select class="form-control" ng-model="state" ng-options="x for x in states"></select>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="zip">Zip:</label>
+                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Number" maxlength="10" />
+                    <span ng-show="checkoutForm.zip.$error.required && !checkoutForm.zip.$pristine" class="help-block">
+                        Your first name is required
+                    </span>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="country">Country:</label>
+                    <select class="form-control" ng-model="country" ng-options="x for x in countries"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12" style="padding-top:30px">
+                <div class="form-group">
+                    <button class="form-control btn-warning" type="submit" ng-disabled="feedbackForm.$invalid">Place Order</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
