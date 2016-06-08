@@ -107,7 +107,7 @@ namespace CoffeeStore
                     Qty = orderLineDTO.Qty,
                     Price = orderLineDTO.Price,
                     ProductID = orderLineDTO.ProductID,
-                    CustomerID = orderLineDTO.CustomerID
+                    CustomerID = orderDTO.CustomerID
                 });
             });
             Order order = new Order

@@ -188,7 +188,9 @@
     <Content Include="App\Index.html" />
     <Content Include="App\Services\AuthService.js" />
     <Content Include="App\Services\cartservice.js" />
+    <Content Include="App\Services\customerservice.js" />
     <Content Include="App\Services\menufactoryservice.js" />
+    <Content Include="App\Services\orderservice.js" />
     <Content Include="App\Views\cartsummary.html" />
     <Content Include="App\Views\checkout.html" />
     <Content Include="App\Views\contactus.html" />
@@ -236,6 +238,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\CommentController.cs" />
+    <Compile Include="Controllers\api\CustomerController.cs" />
     <Compile Include="Controllers\api\LoginController.cs" />
     <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />

@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\ICommentRepository.cs" />
+    <Compile Include="Abstract\ICustomerRepository.cs" />
     <Compile Include="Abstract\ILoginRepository.cs" />
     <Compile Include="Abstract\IOrderRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Cache\RedisCache.cs" />
     <Compile Include="Concrete\CoffeeStoreDbInitializer.cs" />
     <Compile Include="Concrete\CommentRepository.cs" />
+    <Compile Include="Concrete\CustomerRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\LoginRepository.cs" />
     <Compile Include="Concrete\OrderRepository.cs" />

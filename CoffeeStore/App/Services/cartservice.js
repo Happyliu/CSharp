@@ -135,7 +135,7 @@ angular.module('coffeeStoreApp')
 
                 function cartItem(id, name, qty, price, image) {
                     var item = {
-                        id: id,
+                        productId: id,
                         name: name,
                         qty: qty,
                         price: price,
@@ -161,7 +161,7 @@ angular.module('coffeeStoreApp')
                 function itemExist(item) {
                     var items = shoppingCart.items;
                     for (var i = 0; i < items.length; i++) {
-                        if (items[i].id === item.id)
+                        if (items[i].productId === item.productId)
                             return items[i];
                     }
                     return null;
@@ -169,7 +169,7 @@ angular.module('coffeeStoreApp')
 
                 function minusQuantity(id) {
                     angular.forEach(shoppingCart.items, function (value, key) {
-                        if (value.id === id) {
+                        if (value.productId === id) {
                             if (value.qty > 1) {
                                 value.qty -= 1;
                             } else {

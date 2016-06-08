@@ -46,6 +46,7 @@ namespace CoffeeStore.Infrastructure
             kernel.Bind<ICommentRepository>().To<CommentRepository>().InRequestScope();
             kernel.Bind<IOrderRepository>().To<OrderRepository>().InRequestScope();
             kernel.Bind<ILoginRepository>().To<LoginRepository>().InRequestScope();
+            kernel.Bind<ICustomerRepository>().To<CustomerRepository>().InRequestScope();
             kernel.Bind<ICache>().To<RedisCache>().InRequestScope();
         }
     }

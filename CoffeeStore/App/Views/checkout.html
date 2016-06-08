@@ -18,7 +18,7 @@
                     <label for="lastName">Last Name:</label>
                     <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" ng-model="checkout.lastName" required />
                     <span ng-show="checkoutForm.lastName.$error.required && !checkoutForm.lastName.$pristine" class="help-block">
-                        Your first name is required
+                        Your last name is required
                     </span>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error has-feedback':checkoutForm.email.$invalid && !checkoutForm.email.$pristine}">
@@ -36,7 +36,7 @@
                     <label for="phoneNumber">Phone Number</label>
                     <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
                     <span ng-show="checkoutForm.phoneNumber.$error.required && !checkoutForm.phoneNumber.$pristine" class="help-block">
-                        Your first name is required
+                        Your phone number is required
                     </span>
                 </div>
                 <div class="form-group col-xs-12">
@@ -48,21 +48,21 @@
                     <label for="addrline1">Address Line1:</label>
                     <input type="text" class="form-control" id="addrline1" name="addrline1" placeholder="Street address, P.O. box, company name, c/o " ng-model="checkout.addrline1" ng-maxlength="10" required />
                     <span ng-show="(checkoutForm.addrline1.$error.maxlength || heckoutForm.addrline1.$error.required) && !checkoutForm.addrline1.$pristine" class="help-block">
-                        Your first name is required
+                        Your address is required
                     </span>
                 </div>
                 <div class="form-group col-md-6 col-xs-12" ng-class="{'has-error has-feedback':checkoutForm.addrline2.$invalid && !checkoutForm.addrline2.$pristine}">
                     <label for="addrline2">Address Line2:</label>
                     <input type="text" class="form-control" id="addrline2" name="addrline2" placeholder="Apartment, suite, unit, building, floor, etc. " ng-model="checkout.addrline2" ng-maxlength="10" />
                     <span ng-show="checkoutForm.addrline2.$error.maxlength && !checkoutForm.addrline2.$pristine" class="help-block">
-                        Your first name is required
+                        Your address is required
                     </span>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="city">City:</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="City" />
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" required />
                     <span ng-show="checkoutForm.city.$error.required && !checkoutForm.city.$pristine" class="help-block">
-                        Your first name is required
+                        City name is required
                     </span>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
@@ -73,7 +73,7 @@
                     <label for="zip">Zip:</label>
                     <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Number" maxlength="10" />
                     <span ng-show="checkoutForm.zip.$error.required && !checkoutForm.zip.$pristine" class="help-block">
-                        Your first name is required
+                        Your zip code is required
                     </span>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
@@ -83,7 +83,7 @@
             </div>
             <div class="col-md-3 col-xs-12" style="padding-top:30px">
                 <div class="form-group">
-                    <button class="form-control btn-warning" type="submit" ng-disabled="feedbackForm.$invalid">Place Order</button>
+                    <button class="form-control btn-warning" type="submit" ng-disabled="checkoutForm.$invalid">Place Order</button>
                 </div>
             </div>
         </form>
