@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('coffeeStoreApp')
-    .controller('CheckController', ['$scope', 'customerservice', 'orderservice', function ($scope, customerservice, orderservice) {
+    .controller('CheckController', ['$scope', 'customerservice', 'orderservice', '$state', '$timeout', function ($scope, customerservice, orderservice, $state, $timeout) {
         $scope.state = "FL";
         $scope.country = "US";
         $scope.states = ["FL", "CA", "TX", "NM", "AZ"];
@@ -41,7 +41,11 @@ angular.module('coffeeStoreApp')
             orderservice.checkout(order).then(
                 function (data) {
                     alert("place order successful!");
-                    console.log("place order success");
+                    $scope.$parent.cartService.clearCart();
+                    console.log("place order success! redirect to home page ...");
+                    $timeout(function () {
+                        $state.go('app', {}, { reload: true })
+                    }, 2000);
                 },
                 function (error) {
                     console.log("place order has error");

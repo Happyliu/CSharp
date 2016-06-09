@@ -91,6 +91,8 @@ angular.module('coffeeStoreApp')
                         url: "../api/ShppingCartRedis?username=" + username,
                         headers: { 'Content-type': 'application/json' }
                     }).success(function (data) {
+                        if (data == null)
+                            return;
                         shoppingCart.items = data.cart;
                         console.log(shoppingCart.items);
                         deferred.resolve(data);

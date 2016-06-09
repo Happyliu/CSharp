@@ -17,11 +17,11 @@
                 <td>{{item.name}}</td>
                 <td>{{item.price | currency}}</td>
                 <td align="center">
-                    <a ng-click="cartSummaryData.minusOneQty(item.id, item.qty)">
+                    <a ng-click="cartSummaryData.minusOneQty(item.productId, item.qty)">
                         <span class="glyphicon glyphicon-minus"></span>
                     </a>
                     {{item.qty}}
-                    <a ng-click="cartSummaryData.addOneQty(item.id,item.name,1,item.price,item.image)">
+                    <a ng-click="cartSummaryData.addOneQty(item.productId,item.name,1,item.price,item.image)">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </td>

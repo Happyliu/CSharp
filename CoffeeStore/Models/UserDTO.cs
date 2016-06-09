@@ -20,7 +20,7 @@ namespace CoffeeStore.Models
 
     public class ItemDTO
     {
-        public int id;
+        public int productId;
         public string name;
         public int price;
         public int qty;
@@ -28,7 +28,7 @@ namespace CoffeeStore.Models
 
         public ItemDTO(int id, string name, int price, int qty, byte[] image)
         {
-            this.id = id;
+            this.productId = id;
             this.name = name;
             this.price = price;
             this.qty = qty;
