@@ -24,6 +24,7 @@ angular.module('coffeeStoreApp')
             minusOneQty: minusOneQty
         };
         $scope.pickUp = false;
+        $scope.pickuptime = new Date();
         $scope.openLoginModel = function () {
 
             var modalInstance = $uibModal.open({
@@ -43,15 +44,27 @@ angular.module('coffeeStoreApp')
             });
         };
         $scope.checkout = function () {
+            if ($scope.pickUp || $scope.dt !== undefined || $scope.mytime !== undefined || $scope.dt !== null || $scope.mytime !== null) {
+                $scope.pickuptime.setFullYear($scope.dt.getFullYear());
+                $scope.pickuptime.setMonth($scope.dt.getMonth());
+                $scope.pickuptime.setDate($scope.dt.getDate());
+                $scope.pickuptime.setHours($scope.mytime.getHours());
+                $scope.pickuptime.setMinutes($scope.mytime.getMinutes());
+                $scope.$parent.cartService.setPickupInfo($scope.pickUp, $scope.pickuptime);
+                console.log($scope.$parent.cartService.getPickupInfo());
+            }
             var authInfo = $scope.$parent.service.getAuthInfo();
             if ((authInfo.user === "" && authInfo.authToken === "") || (authInfo.user === undefined && authInfo.authToken === undefined)) {
                 $scope.openLoginModel();
             } else {
-                if ($scope.$parent.service.checkValidToken()) {
-                    $state.go('app.checkout', {}, { reload: true });
-                } else {
-                    $scope.openLoginModel();
-                }
+                $scope.$parent.service.checkValidToken().then(function (data) {
+                    if (data) {
+                        $state.go('app.checkout', {}, { reload: true });
+                    } else {
+                        $scope.$parent.service.resetisAuthenticated();
+                        $scope.openLoginModel();
+                    }
+                });
             }
         }
 
@@ -73,7 +86,7 @@ angular.module('coffeeStoreApp')
             startingDay: 1
         };
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
+        $scope.format = $scope.formats[3];
         $scope.status = {
             opened: false
         };
@@ -82,7 +95,7 @@ angular.module('coffeeStoreApp')
         };
         // Disable weekend selection
         $scope.disabled = function (date, mode) {
-            return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+            return false;
         };
 
         //uil time picker control
@@ -109,7 +122,7 @@ angular.module('coffeeStoreApp')
         };
 
         $scope.changed = function () {
-            $log.log('Time changed to: ' + $scope.mytime);
+            //$log.log('Time changed to: ' + $scope.mytime);
         };
 
         $scope.clear = function () {

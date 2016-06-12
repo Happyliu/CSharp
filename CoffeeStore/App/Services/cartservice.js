@@ -45,7 +45,9 @@ angular.module('coffeeStoreApp')
             }])
             .service('cartservice', ['$http', '$q', 'authService', function ($http, $q, authService) {
                 var shoppingCart = {
-                    items: []
+                    items: [],
+                    pickup: false,
+                    pickuptime: new Date()
                 };
                 var cartKey = "cart";
                 var username = "";
@@ -61,7 +63,9 @@ angular.module('coffeeStoreApp')
                     } else {
                         if (window.localStorage.getItem(cartKey) === null) {
                             shoppingCart = {
-                                items: []
+                                items: [],
+                                pickup: false,
+                                pickuptime: new Date()
                             };
                             window.localStorage.setItem(cartKey, JSON.stringify(shoppingCart));
                             console.log("this time" + shoppingCart);
@@ -127,6 +131,8 @@ angular.module('coffeeStoreApp')
                         if (username !== "" && authToken !== "")
                             clearCartInRedis(username);
                     }
+                    shoppingCart.pickup = false;
+                    shoppingCart.pickuptime = new Date();
                 }
 
                 function clearCartInRedis(username) {
@@ -211,6 +217,22 @@ angular.module('coffeeStoreApp')
                     return total;
                 }
 
+                function setPickupInfo(pickup, pickuptime) {
+                    if (pickup === undefined || pickup === null || pickuptime === undefined || pickuptime === null)
+                        return;
+                    shoppingCart.pickup = pickup;
+                    shoppingCart.pickuptime = pickuptime;
+                    console.log(shoppingCart.pickup + " " + shoppingCart.pickuptime);
+                }
+
+                function getPickupInfo() {
+                    var pickupInfo = {
+                        pickup: shoppingCart.pickup,
+                        pickuptime: shoppingCart.pickuptime
+                    }
+                    return pickupInfo;
+                }
+
                 //var itemsChange=function() {
                 //    var curItemNumber = -1;
                 //    var items = JSON.parse(window.localStorage.getItem(cartKey));
@@ -227,6 +249,8 @@ angular.module('coffeeStoreApp')
                     clearCart: clearCart,
                     getTotalPrice: getTotalPrice,
                     minusQuantity: minusQuantity,
+                    setPickupInfo: setPickupInfo,
+                    getPickupInfo: getPickupInfo,
                     init: init
                 }
 

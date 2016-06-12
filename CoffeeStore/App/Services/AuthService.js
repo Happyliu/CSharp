@@ -38,6 +38,10 @@ angular.module('coffeeStoreApp')
                     window.localStorage.removeItem(userKey);
                 }
 
+                function resetisAuthenticated() {
+                    authToken = false;
+                }
+
                 var register = function (user) {
 
                 }
@@ -83,9 +87,7 @@ angular.module('coffeeStoreApp')
                     if ((username === undefined && authToken === undefined) || (username === "" && authToken === ""))
                         return false;
                     else {
-                        return checkTokenFromServer().then(function (data) {
-                            return data;
-                        });
+                        return checkTokenFromServer();
                     }
                 }
 
@@ -97,6 +99,7 @@ angular.module('coffeeStoreApp')
                     logout: logout,
                     getAuthInfo: getAuthInfo,
                     checkValidToken: checkValidToken,
+                    resetisAuthenticated: resetisAuthenticated
                 };
 
             }]);
