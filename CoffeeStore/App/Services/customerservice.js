@@ -15,7 +15,21 @@ angular.module('coffeeStoreApp')
                     });
                     return deferred.promise;
                 }
+                var getCustomerCultureByName = function (cusName) {
+                    var deferred = $q.defer();
+                    $http({
+                        method: "GET",
+                        url: "../api/customer/culture?cusName=" + cusName,
+                        headers: { 'content-type': 'application/json' }
+                    }).success(function (data) {
+                        deferred.resolve(data);
+                    }).error(function (data) {
+
+                    });
+                    return deferred.promise;
+                }
                 return {
-                    getCustomerIdByName: getCustomerIdByName
+                    getCustomerIdByName: getCustomerIdByName,
+                    getCustomerCultureByName: getCustomerCultureByName
                 }
             }]);

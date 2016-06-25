@@ -17,5 +17,8 @@ namespace CoffeeStore.Domain.Concrete
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
+        public DbSet<TranslationDefinition> TranslationDefinitions { get; set; }
+        public DbSet<Translation> Translations { get; set; }
     }
 }

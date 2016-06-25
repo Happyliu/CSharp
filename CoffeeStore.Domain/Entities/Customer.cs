@@ -15,5 +15,6 @@ namespace CoffeeStore.Domain.Entities
         public string Cus_Password { get; set; }
         public bool IsGoogle { get; set; }
         public bool IsFacebook { get; set; }
+        public string CultureName { get; set; }
     }
 }

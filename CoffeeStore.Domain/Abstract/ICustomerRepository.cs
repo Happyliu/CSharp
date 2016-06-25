@@ -9,5 +9,6 @@ namespace CoffeeStore.Domain.Abstract
     public interface ICustomerRepository
     {
         int GetCustomerId(string cusName);
+        string GetCustomerCulture(string cusName);
     }
 }

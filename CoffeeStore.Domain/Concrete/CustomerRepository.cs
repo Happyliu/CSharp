@@ -20,5 +20,13 @@ namespace CoffeeStore.Domain.Concrete
             return 0;
         }
 
+        public string GetCustomerCulture(string cusName)
+        {
+            Customer dbEntry = context.Customers.Where(x => x.Cus_Name.Equals(cusName)).SingleOrDefault();
+            if (dbEntry != null)
+                return dbEntry.CultureName;
+            return null;
+        }
+
     }
 }

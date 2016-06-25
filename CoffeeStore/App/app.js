@@ -76,6 +76,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $htt
         }
     })
 
+    //route for checkout page
+    .state('app.translationtest', {
+        url: 'translation',
+        views: {
+            'content@': {
+                templateUrl: 'views/translationtest.html',
+                controller: 'translationtestController'
+            }
+        }
+    })
+
     //route for dishdetail page
     .state('app.productdetails', {
         url: 'menu/:id',

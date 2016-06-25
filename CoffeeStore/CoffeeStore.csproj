@@ -183,6 +183,7 @@
     <Content Include="App\Controllers\homecontroller.js" />
     <Content Include="App\Controllers\menucontroller.js" />
     <Content Include="App\Controllers\productdetailcontroller.js" />
+    <Content Include="App\Controllers\translationtestcontroller.js" />
     <Content Include="App\Directive\cartsummarytabledirectivetemplate.html" />
     <Content Include="App\Images\logo.PNG" />
     <Content Include="App\Index.html" />
@@ -191,6 +192,7 @@
     <Content Include="App\Services\customerservice.js" />
     <Content Include="App\Services\menufactoryservice.js" />
     <Content Include="App\Services\orderservice.js" />
+    <Content Include="App\Services\translationfactory.js" />
     <Content Include="App\Views\cartsummary.html" />
     <Content Include="App\Views\checkout.html" />
     <Content Include="App\Views\contactus.html" />
@@ -200,6 +202,8 @@
     <Content Include="App\Views\loginmodal.html" />
     <Content Include="App\Views\menu.html" />
     <Content Include="App\Views\productdetail.html" />
+    <Content Include="App\Views\translationtest.html" />
+    <Content Include="App\_StaticData.js" />
     <Content Include="Content\bootstrap-social.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -243,6 +247,7 @@
     <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\api\ShppingCartRedisController.cs" />
+    <Compile Include="Controllers\api\TranslationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +261,8 @@
     <Compile Include="Models\OrderDTO.cs" />
     <Compile Include="Models\OrderLineDTO.cs" />
     <Compile Include="Models\ProductDTO.cs" />
+    <Compile Include="Models\TranslationDTO.cs" />
+    <Compile Include="Models\TranslationKeyValueDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

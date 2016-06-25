@@ -24,6 +24,12 @@ namespace CoffeeStore.Controllers.api
             return repository.GetCustomerId(cusName);
         }
 
+        [HttpGet]
+        [Route("culture")]
+        public string getCustomerCulture([FromUri] string cusName)
+        {
+            return repository.GetCustomerCulture(cusName);
+        }
 
     }
 }
