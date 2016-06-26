@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeStore.Domain.Concrete
 {
-    public class CoffeeStoreDbInitializer : DropCreateDatabaseIfModelChanges<EFDbContext>
+    public class CoffeeStoreDbInitializer : DropCreateDatabaseAlways<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {
@@ -50,14 +50,50 @@ namespace CoffeeStore.Domain.Concrete
             context.SaveChanges();
 
             new List<TranslationDefinition>{
-                new TranslationDefinition{TranslationDefinitionKey="testA",Value="test1_default",Name="test1",Description="value for test1"},
-                new TranslationDefinition{TranslationDefinitionKey="testB",Value="test2_defalut",Name="test2",Description="Value for test2"}
+                new TranslationDefinition{TranslationDefinitionKey="SitemapHome",Value="Home",Name="Home",Description="Home page sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapAbout",Value="About",Name="About",Description="About page sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapContact",Value="Contact",Name="Contact",Description="Contact page sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapMenu",Value="Menu",Name="Menu",Description="Menu page sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLogin",Value="Login",Name="Login",Description="Login in sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLogout",Value="Logout",Name="Logout",Description="Logout in sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapViewCart",Value="View My Cart",Name="ViewCart",Description="view cart in the dropdown in sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapClearCart",Value="Clear Cart",Name="ClearCart",Description="Clear cart in sitemap dropdown"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapItems",Value="Items",Name="About",Description="About page sitemap"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterAddress",Value="Our Address",Name="Our Address",Description="Address in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterAddressLine1",Value="3700 Windmeadows Blvd",Name="AddressLine1",Description="AddressLine1 in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterAddressLine2",Value="Gainesville,FL,32608",Name="AddressLine2",Description="AddressLine2 in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterAddressCountry",Value="US",Name="AddressCountry",Description="AddressCountry in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterCopyRight",Value="© Copyright 2016 Ristorante Con Fusion",Name="CopyRight",Description="CopyRight in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapFooterLinks",Value="Links",Name="Links",Description="Links in the footer"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelUserName",Value="User Name: ",Name="User Name",Description="User Name in Login Model"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelPassword",Value="Password: ",Name="Password",Description="Password in Login Model"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelRemember",Value="Remember",Name="Remember",Description="Remember in the Login Model"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelSignIn",Value="Sign In",Name="Sign In",Description="Sign In in the Login Model"},
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelCancel",Value="Cancel",Name="Cancel",Description="Cancel in the Login Model"}
             }.ForEach(translationDefinition => context.TranslationDefinitions.Add(translationDefinition));
             context.SaveChanges();
 
             new List<Translation>{
-                new Translation{TranslationDefinitionID=1,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="test1_zh-CN"},
-                new Translation{TranslationDefinitionID=2,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="test2_zh-CN"}
+                new Translation{TranslationDefinitionID=1,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="主页"},
+                new Translation{TranslationDefinitionID=2,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="关于我们"},
+                new Translation{TranslationDefinitionID=3,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="联系我们"},
+                new Translation{TranslationDefinitionID=4,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="菜单"},
+                new Translation{TranslationDefinitionID=5,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="登录"},
+                new Translation{TranslationDefinitionID=6,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="登出"},
+                new Translation{TranslationDefinitionID=7,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="浏览购物车"},
+                new Translation{TranslationDefinitionID=8,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="清空购物车"},
+                new Translation{TranslationDefinitionID=9,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="件商品"},
+                new Translation{TranslationDefinitionID=10,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="地址"},
+                new Translation{TranslationDefinitionID=11,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="草原微风大街3700号"},
+                new Translation{TranslationDefinitionID=12,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="盖恩斯维尔,佛罗里达,邮编32608"},
+                new Translation{TranslationDefinitionID=13,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="美国"},
+                new Translation{TranslationDefinitionID=14,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="© 版权所有 2016 Ristorante Con Fusion"},
+                new Translation{TranslationDefinitionID=15,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="链接"},
+                new Translation{TranslationDefinitionID=16,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="用户名： "},
+                new Translation{TranslationDefinitionID=17,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="密码： "},
+                new Translation{TranslationDefinitionID=18,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="记住账户"},
+                new Translation{TranslationDefinitionID=19,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="登录"},
+                new Translation{TranslationDefinitionID=20,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="取消"}
             }.ForEach(translation => context.Translations.Add(translation));
             context.SaveChanges();
 

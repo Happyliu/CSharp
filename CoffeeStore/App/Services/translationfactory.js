@@ -47,6 +47,8 @@ angular.module('coffeeStoreApp')
                     angular.forEach(data, function (value, key) {
                         if (value.CustomValue !== null)
                             current[value.Key] = value.CustomValue;
+                        else
+                            current[value.Key] = value.Value;
                     });
                 }
 

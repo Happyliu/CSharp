@@ -2,20 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
-                <h5>Links</h5>
+                <h5>{{::translationfactory.current.SitemapFooterLinks}}</h5>
                 <ul class="list-unstyled">
-                    <li><a ui-sref="app">Home</a></li>
-                    <li><a ui-sref="app.aboutus">About</a></li>
-                    <li><a ui-sref="app.menu">Menu</a></li>
-                    <li><a ui-sref="app.contactus">Contact</a></li>
+                    <li><a ui-sref="app">{{::translationfactory.current.SitemapHome}}</a></li>
+                    <li><a ui-sref="app.aboutus">{{::translationfactory.current.SitemapAbout}}</a></li>
+                    <li><a ui-sref="app.menu">{{::translationfactory.current.SitemapMenu}}</a></li>
+                    <li><a ui-sref="app.contactus">{{::translationfactory.current.SitemapContact}}</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-5">
-                <h5>Our Address</h5>
+                <h5>{{::translationfactory.current.SitemapFooterAddress}}</h5>
                 <address>
-                    121, Clear Water Bay Road<br>
-                    Clear Water Bay, Kowloon<br>
-                    HONG KONG<br>
+                    {{::translationfactory.current.SitemapFooterAddressLine1}}<br>
+                    {{::translationfactory.current.SitemapFooterAddressLine2}}<br>
+                    {{::translationfactory.current.SitemapFooterAddressCountry}}<br>
                     <i class="fa fa-phone"></i>: +852 1234 5678<br>
                     <i class="fa fa-fax"></i>: +852 8765 4321<br>
                     <i class="fa fa-envelope"></i>:
@@ -36,7 +36,7 @@
             </div>
             <div class="col-xs-12">
                 <p style="padding:10px;"></p>
-                <p align=center>© Copyright 2015 Ristorante Con Fusion</p>
+                <p align=center>{{::translationfactory.current.SitemapFooterCopyRight}}</p>
             </div>
         </div>
     </div>

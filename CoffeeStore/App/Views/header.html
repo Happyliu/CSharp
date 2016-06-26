@@ -15,25 +15,24 @@
             <li>
                 <a ui-sref="app">
                     <span class="glyphicon glyphicon-home"
-                          aria-hidden="true"></span> Home
+                          aria-hidden="true"></span> {{::translationfactory.current.SitemapHome}}
                 </a>
             </li>
             <li>
                 <a ui-sref="app.aboutus">
                     <span class="glyphicon glyphicon-info-sign"
-                          aria-hidden="true"></span> About
+                          aria-hidden="true"></span> {{::translationfactory.current.SitemapAbout}}
                 </a>
             </li>
             <li>
                 <a ui-sref="app.menu">
                     <span class="glyphicon glyphicon-list-alt"
-                          aria-hidden="true"></span>
-                    Menu
+                          aria-hidden="true"></span>  {{::translationfactory.current.SitemapMenu}}
                 </a>
             </li>
             <li>
                 <a ui-sref="app.contactus">
-                    <i class="fa fa-envelope-o"></i> Contact
+                    <i class="fa fa-envelope-o"></i> {{::translationfactory.current.SitemapContact}}
                 </a>
             </li>
         </ul>
@@ -41,7 +40,7 @@
             <li ng-hide="isAuthenticated">
                 <a id="loginBtn" ng-click="open()">
                     <span class="glyphicon glyphicon-log-in"></span>
-                    Login
+                    {{::translationfactory.current.SitemapLogin}}
                 </a>
             </li>
             <li class="dropdown" ng-show="isAuthenticated" dropdown="">
@@ -50,7 +49,7 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a ng-click="logout()">Log Out</a>
+                        <a ng-click="logout()">{{::translationfactory.current.SitemapLogout}}</a>
                     </li>
                 </ul>
             </li>
@@ -58,7 +57,7 @@
             <li uib-dropdown on-toggle="toggled()">
                 <a href="#" id="simple-dropdown" uib-dropdown-toggle>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <span>{{cartService.getItems().length}} - Items</span>
+                    <span>{{cartService.getItems().length}} - {{::translationfactory.current.SitemapItems}}</span>
                     <!--<span ng-show="items.length===0">{{cartService.getItems().length}} - Items</span>-->
                     <span class="caret"></span>
                 </a>
@@ -68,10 +67,10 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="clearCart()">Clear Cart</a>
+                        <a ng-click="clearCart()">{{::translationfactory.current.SitemapClearCart}}</a>
                     </li>
                     <li>
-                        <a ui-sref="app.cartsummary">View My Cart</a>
+                        <a ui-sref="app.cartsummary">{{::translationfactory.current.SitemapViewCart}}</a>
                     </li>
                 </ul>
             </li>

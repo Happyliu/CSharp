@@ -1,6 +1,7 @@
-﻿app.controller('GlobalController', ['$scope', 'authService', 'cartservice', '$uibModal', '$log', '$state', '$rootScope', '$timeout', function ($scope, authService, cartservice, $uibModal, $log, $state, $rootScope, $timeout) {
+﻿app.controller('GlobalController', ['$scope', 'authService', 'cartservice', '$uibModal', '$log', '$state', '$rootScope', '$timeout', 'translationfactory', function ($scope, authService, cartservice, $uibModal, $log, $state, $rootScope, $timeout, translationfactory) {
 
     $scope.service = authService;
+    $scope.translationfactory = translationfactory;
 
     //using watch to make sure when user login change the value for current and isAuthenticated, the third value for the watch function is to watch an object
     $scope.$watch('service.getAuthInfo()', function (authInfo) {
@@ -20,6 +21,7 @@
             //need the timeout to set the value for rootscope user variable, then we refrash the page
             $timeout(function () {
                 cartservice.init();
+                translationfactory.init();
                 $state.go($state.current, {}, { reload: true });
             }, 2000);
         }, function () {
@@ -58,7 +60,9 @@
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance', '$state', function ($scope, authService, $uibModalInstance, $state) {
+app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance', '$state', 'translationfactory', function ($scope, authService, $uibModalInstance, $state, translationfactory) {
+
+    $scope.translationfactory = translationfactory;
 
     $scope.user = {
         "Username": "",
