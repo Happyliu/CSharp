@@ -9,6 +9,7 @@ angular.module('coffeeStoreApp')
         $scope.message = "Loading ... ";
         $scope.start = 0;
         $scope.end = 6;
+        $scope.translationfactory = $scope.$parent.translationfactory;
 
         menuFactory.getProducts().then(
             function (response) {

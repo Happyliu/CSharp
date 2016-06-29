@@ -9,16 +9,16 @@
             </button>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" ng-class="{active:isSelected(1)}">
-                    <a ng-click="select(1)" aria-controls="all menu" role="tab">The Menu</a>
+                    <a ng-click="select(1)" aria-controls="all menu" role="tab">{{::translationfactory.current.PageContentMenuNavTabMenu}}</a>
                 </li>
                 <li role="presentation" ng-class="{active:isSelected(2)}">
-                    <a ng-click="select(2)" aria-controls="appetizers" role="tab">Food</a>
+                    <a ng-click="select(2)" aria-controls="appetizers" role="tab">{{::translationfactory.current.PageContentMenuNavTabFood}}</a>
                 </li>
                 <li role="presentation" ng-class="{active:isSelected(3)}">
-                    <a ng-click="select(3)" aria-controls="mains" role="tab">Drinks</a>
+                    <a ng-click="select(3)" aria-controls="mains" role="tab">{{::translationfactory.current.PageContentMenuNavTabDrinks}}</a>
                 </li>
                 <li role="presentation" ng-class="{active:isSelected(4)}">
-                    <a ng-click="select(4)" aria-controls="desserts" role="tab">Desserts</a>
+                    <a ng-click="select(4)" aria-controls="desserts" role="tab">{{::translationfactory.current.PageContentMenuNavTabDesserts}}</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -30,22 +30,25 @@
                                     <img class="img-thumbnail" ng-src="data:image/JPEG;base64,{{dish.ImageData}}" alt="Uthappizza">
                                 </a>
                                 <div class="caption">
-                                    <div style="padding-bottom:10px">
+                                    <div>
                                         <p align="center">
                                             {{dish.P_Name}}
                                             <span class="label label-danger label-xs">{{dish.Label}}</span>
                                             <span class="badge">{{dish.P_Price | currency}}</span>
                                         </p>
                                     </div>
-                                    <form class="form-inline">
-                                        <div class="form-group" style="padding:0px 30px 0px 40px">
-                                            Qty:
+                                    <p align="center">
+
+
+                                        <span style="padding-right:10px">
+                                            {{::translationfactory.current.PageContentMenuQtyText}}
                                             <select ng-model="dish.qty" ng-options="x for x in Selectvalues"></select>
-                                        </div>
-                                        <div class="form-group">
-                                            <a href="#" class="btn btn-default pull-right" role="button" ng-click="$parent.addItem(dish.ProductID,dish.P_Name,dish.qty,dish.P_Price,dish.ImageData)">Add To Cart</a>
-                                        </div>
-                                    </form>
+                                        </span>
+
+
+                                        <a href="#" class="btn btn-default" role="button" ng-click="$parent.addItem(dish.ProductID,dish.P_Name,dish.qty,dish.P_Price,dish.ImageData)">{{::translationfactory.current.PageContentMenuButtonAddCart}}</a>
+
+                                    </p>
                                 </div>
                             </div>
                         </div>

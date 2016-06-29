@@ -69,7 +69,13 @@ namespace CoffeeStore.Domain.Concrete
                 new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelPassword",Value="Password: ",Name="Password",Description="Password in Login Model"},
                 new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelRemember",Value="Remember",Name="Remember",Description="Remember in the Login Model"},
                 new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelSignIn",Value="Sign In",Name="Sign In",Description="Sign In in the Login Model"},
-                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelCancel",Value="Cancel",Name="Cancel",Description="Cancel in the Login Model"}
+                new TranslationDefinition{TranslationDefinitionKey="SitemapLoginModelCancel",Value="Cancel",Name="Cancel",Description="Cancel in the Login Model"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabMenu",Value="The Menu",Name="NavTabMenu",Description="Menu text in the menu page nav bar"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabFood",Value="Food",Name="NavTabFood",Description="Food text in the menu page nav bar"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabDrinks",Value="Drinks",Name="NavTabDrinks",Description="Drinks text in the menu page nav bar"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabDesserts",Value="Desserts",Name="NavTabDesserts",Description="Desserts text in the menu page nav bar"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuQtyText",Value="Qty:",Name="quantity",Description="qty text in the menu page"},
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuButtonAddCart",Value="Add To Cart",Name="Add to cart",Description="add to cart button text in the menu page"}
             }.ForEach(translationDefinition => context.TranslationDefinitions.Add(translationDefinition));
             context.SaveChanges();
 
@@ -93,7 +99,13 @@ namespace CoffeeStore.Domain.Concrete
                 new Translation{TranslationDefinitionID=17,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="密码： "},
                 new Translation{TranslationDefinitionID=18,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="记住账户"},
                 new Translation{TranslationDefinitionID=19,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="登录"},
-                new Translation{TranslationDefinitionID=20,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="取消"}
+                new Translation{TranslationDefinitionID=20,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="取消"},
+                new Translation{TranslationDefinitionID=21,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="所有菜单"},
+                new Translation{TranslationDefinitionID=22,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="食物"},
+                new Translation{TranslationDefinitionID=23,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="饮料"},
+                new Translation{TranslationDefinitionID=24,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="甜点"},
+                new Translation{TranslationDefinitionID=25,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="数量："},
+                new Translation{TranslationDefinitionID=26,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="加入购物车"}
             }.ForEach(translation => context.Translations.Add(translation));
             context.SaveChanges();
 

@@ -81,6 +81,30 @@
             {
                 Key: "SitemapLoginModelCancel",
                 Value: "Cancel"
+            },
+            {
+                Key: "PageContentMenuNavTabMenu",
+                Value: "The Menu"
+            },
+            {
+                Key: "PageContentMenuNavTabFood",
+                Value: "Food"
+            },
+            {
+                Key: "PageContentMenuNavTabDrinks",
+                Value: "Drinks"
+            },
+            {
+                Key: "PageContentMenuNavTabDesserts",
+                Value: "Desserts"
+            },
+            {
+                Key: "PageContentMenuQtyText",
+                Value: "Qty:"
+            },
+            {
+                Key: "PageContentMenuButtonAddCart",
+                Value: "Add To Cart"
             }
         ]
     };

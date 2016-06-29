@@ -21,9 +21,11 @@
             //need the timeout to set the value for rootscope user variable, then we refrash the page
             $timeout(function () {
                 cartservice.init();
-                translationfactory.init();
-                $state.go($state.current, {}, { reload: true });
-            }, 2000);
+                translationfactory.initPromise().then(function () {
+                    $state.go($state.current, {}, { reload: true });
+                }, 2000);
+            });
+
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -31,7 +33,14 @@
 
     $scope.logout = function () {
         authService.logout();
-        $state.go($state.current, {}, { reload: true });
+        translationfactory.logoutPromise().then(
+            function () {
+                $state.go($state.current, {}, { reload: true });
+            },
+            function () {
+                $state.go($state.current, {}, { reload: true });
+            }
+        );
     }
 
     $scope.cartService = cartservice;
@@ -83,12 +92,13 @@ app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance
                 $scope.result.Username = $scope.user.Username;
                 $scope.result.Token = data;
                 localStorage.setItem('Username', $scope.user.Username);
+                $uibModalInstance.close($scope.result);
             },
             function (data) {
-
+                $uibModalInstance.close($scope.result);
             }
         );
-        $uibModalInstance.close($scope.result);
+
     };
 
     $scope.cancel = function () {

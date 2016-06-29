@@ -23,6 +23,44 @@ angular.module('coffeeStoreApp')
                     });
                 }
 
+                function initPromise() {
+                    var defered = $q.defer();
+                    var translationKeys = staticData.translationKeys;
+                    loadKeysFromStaticData(translationKeys);
+                    var cusName = authService.getAuthInfo().user;
+                    customerservice.getCustomerCultureByName(cusName).then(function (result) {
+                        culturecode = result;
+                    }).then(function () {
+                        var translationRequest = {
+                            CultureKey: culturecode,
+                            Values: keys
+                        }
+                        getTranslation(translationRequest).then(function (data) {
+                            loadDataToCurrent(data.Values)
+                            console.log(current);
+                            defered.resolve(data);
+                        });
+                    });
+                    return defered.promise;
+                }
+
+                function logoutPromise() {
+                    var defered = $q.defer();
+                    var translationKeys = staticData.translationKeys;
+                    loadKeysFromStaticData(translationKeys);
+
+                    var translationRequest = {
+                        CultureKey: "",
+                        Values: keys
+                    }
+                    getTranslation(translationRequest).then(function (data) {
+                        loadDataToCurrent(data.Values)
+                        console.log(current);
+                        defered.resolve(data);
+                    });
+                    return defered.promise;
+                }
+
                 function loadKeysFromStaticData(translationKeys) {
                     angular.forEach(translationKeys, function (value, key) {
                         keys.push({
@@ -64,6 +102,8 @@ angular.module('coffeeStoreApp')
                 init();
                 return {
                     init: init,
+                    initPromise: initPromise,
+                    logoutPromise: logoutPromise,
                     getTranslatedValue: getTranslatedValue,
                     current: current
                 }
