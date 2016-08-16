@@ -15,12 +15,14 @@ namespace CoffeeStore.Domain.Entities
         [Required]
         public string P_Name { get; set; }
         [Display(Name = "Price")]
+        [Range(0, 200)]
         [Required]
         public decimal P_Price { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
         public string Label { get; set; }
         public string Description { get; set; }
+        public string SearchKey { get; set; }
         public ICollection<Comment> Comments { get; set; }
 
         public Category Category { get; set; }
