@@ -4,13 +4,16 @@ angular.module('coffeeStoreApp')
             .factory("translationfactory", ['$http', '$q', 'customerservice', 'authService', function ($http, $q, customerservice, authService) {
                 var keys = [];
                 var current = {};
-                var culturecode = null;
+                var culturecode = 'en-US';
+                var cultureStoreKey = 'cultureKey';
                 function init() {
                     var translationKeys = staticData.translationKeys;
                     loadKeysFromStaticData(translationKeys);
                     var cusName = authService.getAuthInfo().user;
+                    culturecode = window.localStorage.getItem(cultureStoreKey);
                     customerservice.getCustomerCultureByName(cusName).then(function (result) {
-                        culturecode = result;
+                        if (result !== null)
+                            culturecode = result;
                     }).then(function () {
                         var translationRequest = {
                             CultureKey: culturecode,
@@ -90,8 +93,26 @@ angular.module('coffeeStoreApp')
                     });
                 }
 
-                function changeCulture() {
-
+                function changeCulture(culturecode) {
+                    if (culturecode === 'en-US')
+                        culturecode = null;
+                    var deferred = $q.defer();
+                    var translationRequest = {
+                        CultureKey: culturecode,
+                        Values: keys
+                    }
+                    getTranslation(translationRequest).then(
+                        function (data) {
+                            loadDataToCurrent(data.Values)
+                            window.localStorage.setItem(cultureStoreKey, culturecode);
+                            console.log(current);
+                            deferred.resolve(data);
+                        },
+                        function (error) {
+                            console.log("change language has an error");
+                        }
+                    );
+                    return deferred.promise;
                 }
                 function clearCache() {
 
@@ -99,12 +120,34 @@ angular.module('coffeeStoreApp')
                 function getTranslatedValue() {
 
                 }
+                function getLanguageTranslatedValue(lang) {
+                    switch (lang) {
+                        case 'en-US':
+                            var langObj = {
+                                lang: lang,
+                                nativeName: current['LanguageEnglishUS']
+                            }
+                            return langObj;
+                            break;
+                        case 'zh-CN':
+                            var langObj = {
+                                lang: lang,
+                                nativeName: current['LanguageChineseSimplified']
+                            }
+                            return langObj;
+                            break;
+                        default:
+
+                    }
+                }
                 init();
                 return {
                     init: init,
                     initPromise: initPromise,
                     logoutPromise: logoutPromise,
                     getTranslatedValue: getTranslatedValue,
-                    current: current
+                    current: current,
+                    changeCulture: changeCulture,
+                    getLanguageTranslatedValue: getLanguageTranslatedValue
                 }
             }]);

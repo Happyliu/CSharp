@@ -37,6 +37,11 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <lang-picker supported-languages="i18n.supportedLangs" on-language-change="onLanguageChange(lang)">
+                    <span class="fa fa-globe"></span> {{translationfactory.getLanguageTranslatedValue(i18n.currentLang).nativeName}}
+                </lang-picker>
+            </li>
             <li ng-hide="isAuthenticated">
                 <a id="loginBtn" ng-click="open()">
                     <span class="glyphicon glyphicon-log-in"></span>

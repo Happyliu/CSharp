@@ -64,6 +64,18 @@
     }
     $scope.state = $state;
 
+    $scope.i18n = {
+        currentLang: 'en-US',
+        supportedLangs: ['en-US', 'zh-CN']
+    };
+    $scope.onLanguageChange = function (lang) {
+        $scope.i18n.currentLang = lang;
+        translationfactory.changeCulture(lang).then(function () {
+            $state.go($state.current, {}, { reload: true });
+        }, function (error) {
+            console.log("change language error");
+        });
+    };
 }]);
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.

@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="close()">&times;</button>
+    <h4 class="modal-title">{{::translationfactory.current.LanguagePickerModalTitle}}</h4>
+</div>
+<div class="modal-body">
+    <h4>{{::translationfactory.current.LanguagePickerModalChooseLanguage}}</h4>
+    <div class="form-group ">
+        <input class="form-control " type="search" ng-model="langSearch" placeholder="{{::translationfactory.current.LanguagePickerModalSearchInputBoxPlaceHolder}}">
+    </div>
+    <h4>{{::translationfactory.current.LanguagePickerModalSupportedLanguageText1part}} {{langInfo.length}} {{::translationfactory.current.LanguagePickerModalSupportedLanguageText2part}}</h4>
+    <div class="row ">
+        <div class="col-xs-6 col-sm-4 col-lg-3 " ng-repeat="lang in langInfo | filter:langSearch | limitTo: limit">
+            <a href="#" ng-click="onLanguageChange({lang: lang.lang})" class="ellipsis lang-picker-lang">
+                {{lang.nativeName}}
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer modal-lang-picker ">
+
+    {{::translationfactory.current.LanguagePickerModalDontSeeLanguagetext}} <a target="_blank " href="">{{::translationfactory.current.LanguagePickerModalHelpUsTranslate}}</a>
+
+</div>
+
+

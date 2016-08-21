@@ -105,6 +105,42 @@
             {
                 Key: "PageContentMenuButtonAddCart",
                 Value: "Add To Cart"
+            },
+            {
+                Key: "LanguageEnglishUS",
+                Value: "English(United States)"
+            },
+            {
+                Key: "LanguageChineseSimplified",
+                Value: "Chinese(Simplified)"
+            },
+            {
+                Key: "LanguagePickerModalChooseLanguage",
+                Value: "Choose a language"
+            },
+            {
+                Key: "LanguagePickerModalSupportedLanguageText1part",
+                Value: "CoffeeStore is offered in "
+            },
+            {
+                Key: "LanguagePickerModalSupportedLanguageText2part",
+                Value: " languages"
+            },
+            {
+                Key: "LanguagePickerModalSearchInputBoxPlaceHolder",
+                Value: "Search languages... "
+            },
+            {
+                Key: "LanguagePickerModalDontSeeLanguagetext",
+                Value: "Don't see your language?"
+            },
+            {
+                Key: "LanguagePickerModalHelpUsTranslate",
+                Value: "Help us translate!"
+            },
+            {
+                Key: "LanguagePickerModalTitle",
+                Value: "Language Choose Modal"
             }
         ]
     };

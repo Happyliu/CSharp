@@ -1,4 +1,4 @@
-﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ui.bootstrap', 'ngTable']);
+﻿var app = angular.module('coffeeStoreApp', ['ui.router', 'ui.bootstrap', 'ngTable', 'k8LanguagePicker']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
@@ -77,12 +77,23 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $htt
     })
 
     //route for checkout page
-    .state('app.translationtest', {
-        url: 'translation',
+    .state('app.myprofile', {
+        url: 'myprofile',
         views: {
             'content@': {
-                templateUrl: 'views/translationtest.html',
-                controller: 'translationtestController'
+                templateUrl: 'views/myprofile.html',
+                controller: 'myprofileController'
+            }
+        }
+    })
+
+    //route for checkout page
+    .state('app.search', {
+        url: 'search',
+        views: {
+            'content@': {
+                templateUrl: 'views/search.html',
+                controller: 'searchController'
             }
         }
     })

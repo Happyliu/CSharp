@@ -4,9 +4,9 @@
             <h3>{{message}}</h3>
         </div>
         <div class="col-xs-12" ng-if="showMenu">
-            <button ng-click="toggleDetails()" class="btn btn-primary pull-right" type="button">
+            <!--<button ng-click="toggleDetails()" class="btn btn-primary pull-right" type="button">
                 {{showDetails?'Hide Details':'Show Details'}}
-            </button>
+            </button>-->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" ng-class="{active:isSelected(1)}">
                     <a ng-click="select(1)" aria-controls="all menu" role="tab">{{::translationfactory.current.PageContentMenuNavTabMenu}}</a>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeStore.Domain.Concrete
 {
-    public class CoffeeStoreDbInitializer : DropCreateDatabaseAlways<EFDbContext>
+    public class CoffeeStoreDbInitializer : DropCreateDatabaseAlways<EFDbContext>//DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {
@@ -112,7 +112,16 @@ namespace CoffeeStore.Domain.Concrete
                 new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabDrinks",Value="Drinks",Name="NavTabDrinks",Description="Drinks text in the menu page nav bar"},
                 new TranslationDefinition{TranslationDefinitionKey="PageContentMenuNavTabDesserts",Value="Desserts",Name="NavTabDesserts",Description="Desserts text in the menu page nav bar"},
                 new TranslationDefinition{TranslationDefinitionKey="PageContentMenuQtyText",Value="Qty:",Name="quantity",Description="qty text in the menu page"},
-                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuButtonAddCart",Value="Add To Cart",Name="Add to cart",Description="add to cart button text in the menu page"}
+                new TranslationDefinition{TranslationDefinitionKey="PageContentMenuButtonAddCart",Value="Add To Cart",Name="Add to cart",Description="add to cart button text in the menu page"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguageEnglishUS",Value="English(United States)",Name="English(United States)",Description="United states english string"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguageChineseSimplified",Value="Chinese(Simplified)",Name="Chinese(Simplified)",Description="Simplied Chinese string"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalChooseLanguage",Value="Choose a language",Name="Choose a language",Description="Choose a language string in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalSupportedLanguageText1part",Value="CoffeeStore is offered in ",Name="CoffeeStore is offered in ",Description="supported language first part in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalSupportedLanguageText2part",Value=" languages",Name=" languages",Description="supported language second part in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalSearchInputBoxPlaceHolder",Value="Search languages... ",Name="Search languages... ",Description="place holder string for search language input text box in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalDontSeeLanguagetext",Value="Don't see your language?",Name="Don't see your language?",Description="don't see language string in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalHelpUsTranslate",Value="Help us translate!",Name="Help us translate!",Description="help us translate string in language picker modal"},
+                new TranslationDefinition{TranslationDefinitionKey="LanguagePickerModalTitle",Value="Language Choose Modal",Name="Language Choose Modal",Description="modal title in language picker modal"}
             }.ForEach(translationDefinition => context.TranslationDefinitions.Add(translationDefinition));
             context.SaveChanges();
 
@@ -142,7 +151,16 @@ namespace CoffeeStore.Domain.Concrete
                 new Translation{TranslationDefinitionID=23,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="饮料"},
                 new Translation{TranslationDefinitionID=24,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="甜点"},
                 new Translation{TranslationDefinitionID=25,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="数量："},
-                new Translation{TranslationDefinitionID=26,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="加入购物车"}
+                new Translation{TranslationDefinitionID=26,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="加入购物车"},
+                new Translation{TranslationDefinitionID=27,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="英语(美国)"},
+                new Translation{TranslationDefinitionID=28,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="中文(简体)"},
+                new Translation{TranslationDefinitionID=29,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="选择一门语言"},
+                new Translation{TranslationDefinitionID=30,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="咖啡屋提供"},
+                new Translation{TranslationDefinitionID=31,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="语言"},
+                new Translation{TranslationDefinitionID=32,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="搜索你想要的语言..."},
+                new Translation{TranslationDefinitionID=33,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="没有看到想要的语言？"},
+                new Translation{TranslationDefinitionID=34,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="帮助我们翻译！"},
+                new Translation{TranslationDefinitionID=35,ObjectType="TranslationDefinition",PropertyName="Value",CultureCode="zh-CN",Value="语言选择页面"}
             }.ForEach(translation => context.Translations.Add(translation));
             context.SaveChanges();
 
