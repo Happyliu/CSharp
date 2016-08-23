@@ -84,7 +84,7 @@
 app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance', '$state', 'translationfactory', function ($scope, authService, $uibModalInstance, $state, translationfactory) {
 
     $scope.translationfactory = translationfactory;
-
+    $scope.hasLoginError = false;
     $scope.user = {
         "Username": "",
         "Password": "",
@@ -98,6 +98,15 @@ app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance
         "Token": "",
     }
 
+    $scope.alerts = [
+        { type: 'danger', msg: '' },
+    ];
+
+
+    $scope.closeAlert = function (index) {
+        $scope.alerts.splice(index, 1);
+    };
+
     $scope.ok = function () {
         authService.login($scope.user).then(
             function (data) {
@@ -106,8 +115,11 @@ app.controller('ModalInstanceCtrl', ['$scope', 'authService', '$uibModalInstance
                 localStorage.setItem('Username', $scope.user.Username);
                 $uibModalInstance.close($scope.result);
             },
-            function (data) {
-                $uibModalInstance.close($scope.result);
+            function (error) {
+                console.log(error.data.Message);
+                $scope.hasLoginError = true;
+                $scope.alerts[0].msg = error.data.Message;
+                //$uibModalInstance.close($scope.result);
             }
         );
 

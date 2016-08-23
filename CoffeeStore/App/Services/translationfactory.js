@@ -12,7 +12,7 @@ angular.module('coffeeStoreApp')
                     var cusName = authService.getAuthInfo().user;
                     culturecode = window.localStorage.getItem(cultureStoreKey);
                     customerservice.getCustomerCultureByName(cusName).then(function (result) {
-                        if (result !== null)
+                        if (result !== null && result !=="en-US")
                             culturecode = result;
                     }).then(function () {
                         var translationRequest = {

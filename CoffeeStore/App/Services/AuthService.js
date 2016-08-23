@@ -46,11 +46,14 @@ angular.module('coffeeStoreApp')
 
                 }
 
-                var login = function (user) {
+                function login(user) {
                     var deferred = $q.defer();
-                    $http.post('../api/login', user).success(function (data) {
-                        storeUserCredentials(data, user.Username);
+                    $http.post('../api/login', user).then(function (data) {
+                        storeUserCredentials(data.data, user.Username);
                         deferred.resolve(data);
+                    }, function (error) {
+                        console.log(error.data.Message);
+                        deferred.reject(error);
                     });
                     return deferred.promise;
                 }

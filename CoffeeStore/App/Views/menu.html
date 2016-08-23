@@ -32,7 +32,9 @@
                                 <div class="caption">
                                     <div>
                                         <p align="center">
-                                            {{dish.P_Name}}
+                                            {{dish.P_Name|limitTo:40}}
+                                        </p>
+                                        <p align="center">
                                             <span class="label label-danger label-xs">{{dish.Label}}</span>
                                             <span class="badge">{{dish.P_Price | currency}}</span>
                                         </p>

@@ -20,5 +20,23 @@ namespace CoffeeStore.Domain.Concrete
             else
                 return null;
         }
+
+        public bool IsValidUserName(string username)
+        {
+            if (!string.IsNullOrEmpty(username))
+            {
+                return context.Customers.Any(x => x.Cus_Name.Equals(username));
+            }
+            return false;
+        }
+
+        public bool IsValidForLogin(string username, string password)
+        {
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            {
+                return context.Customers.Any(x => x.Cus_Name.Equals(username) && x.Cus_Password.Equals(password));
+            }
+            return false;
+        }
     }
 }

@@ -70,7 +70,9 @@ namespace CoffeeStore.Domain.Concrete
             context.SaveChanges();
 
             new List<Customer>{
-                new Customer{Cus_Name="Zhao Liu",Cus_Phone="3522784182",Cus_Email="liuzhao070@gmail.com",Cus_Password="123",CultureName="zh-CN"}
+                new Customer{Cus_Name="Zhao Liu",Cus_Phone="3522784182",Cus_Email="liuzhao070@gmail.com",Cus_Password="123",CultureName="zh-CN"},
+                new Customer{Cus_Name="guest1",Cus_Phone="3522784182",Cus_Email="guest1@gmail.com",Cus_Password="guest1",CultureName="en-US"},
+                new Customer{Cus_Name="guest2",Cus_Phone="3522784182",Cus_Email="guest2@gmail.com",Cus_Password="guest2",CultureName="zh-CN"}
             }.ForEach(cus => context.Customers.Add(cus));
             context.SaveChanges();
 

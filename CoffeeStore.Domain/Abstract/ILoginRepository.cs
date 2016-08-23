@@ -9,5 +9,7 @@ namespace CoffeeStore.Domain.Abstract
     public interface ILoginRepository
     {
         string GetPassword(string username);
+        bool IsValidUserName(string username);
+        bool IsValidForLogin(string username, string password);
     }
 }

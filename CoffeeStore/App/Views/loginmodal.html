@@ -3,7 +3,8 @@
     <h4 class="modal-title">{{::translationfactory.current.SitemapLoginModelSignIn}}</h4>
 </div>
 <div class="modal-body">
-    <form class="form" role="register">
+    <form class="form">
+        <uib-alert ng-show="hasLoginError" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
         <div class="form-group">
             <label for="username">{{::translationfactory.current.SitemapLoginModelUserName}}</label>
             <input type="text" class="form-control" placeholder="User Name" ng-model="user.Username">
