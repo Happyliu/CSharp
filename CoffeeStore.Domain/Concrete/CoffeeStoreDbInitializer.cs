@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeStore.Domain.Concrete
 {
-    public class CoffeeStoreDbInitializer : DropCreateDatabaseAlways<EFDbContext>//DropCreateDatabaseIfModelChanges<EFDbContext>
+    public class CoffeeStoreDbInitializer : /*DropCreateDatabaseAlways<EFDbContext>//*/DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {

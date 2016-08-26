@@ -108,7 +108,7 @@ body {
     overflow: auto;
 }*/
 
-.thumbnail img{
-    height: 200px;
-    width:242px;
+.thumbnail-img{
+    max-height: 200px;
+    max-width:242px;
 }
