@@ -12,6 +12,16 @@ namespace CoffeeStore.Domain.Concrete
     {
         private EFDbContext context = new EFDbContext();
 
+        public ProductRepository()
+        {
+
+        }
+
+        public ProductRepository(EFDbContext context)
+        {
+           this.context = context;
+        }
+
         public IEnumerable<Product> Products
         {
             get { return context.Products; }
