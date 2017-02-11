@@ -45,6 +45,7 @@ namespace CoffeeStoreUnitTest.DomainProjectUnitTests
         }
 
         [Test]
+        [Ignore("Ignore add product case")]
         public void AddNewProduct()
         {
             Product p = new Product()
@@ -62,6 +63,7 @@ namespace CoffeeStoreUnitTest.DomainProjectUnitTests
         }
 
         [Test]
+        [Ignore("Ignore remove case")]
         public void CanRemoveProduct()
         {
             Assert.That(repository.Products.Any(pd => pd.P_Name.Equals("Test") && pd.P_Price == 3 && pd.Description.Equals("this is a test")));

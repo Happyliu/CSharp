@@ -42,15 +42,21 @@ namespace CoffeeStore.Controllers
                 error.Add("AvailbelIDs", repository.Products.Select(x => x.ProductID));
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, error);
             }
-            return Request.CreateResponse(DataHelper.ChangeProductEntityToDTO(product));
+            ProductDTO pdto = DataHelper.ChangeProductEntityToDTO(product);
+            return Request.CreateResponse(HttpStatusCode.Accepted,pdto);
         }
 
         [Route("category/{id}")]
-        public IHttpActionResult GetProducts(int id)
+        public HttpResponseMessage GetProducts(int id)
         {
             if (id < 0 || id > 2)
-                return BadRequest("No such category");
-            return Ok(DataHelper.ChangeProductEntityToDTO(repository.GetProductsByCatID(id).ToList()));
+            {
+                HttpError error = new HttpError();
+                error.Message = "No such date item";
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, error);
+            }
+            IList<ProductDTO> res = DataHelper.ChangeProductEntityToDTO(repository.GetProductsByCatID(id).ToList());
+            return Request.CreateResponse(HttpStatusCode.Accepted, res);
         }
 
         public IEnumerable<ProductDTO> GetProductsByLabel(string label)
@@ -97,13 +103,13 @@ namespace CoffeeStore.Controllers
 
         [HttpPost]
         [Route("addcomment")]
-        public async Task<HttpResponseMessage> PostComment(CommentDTO comment)
+        public HttpResponseMessage PostComment(CommentDTO comment)
         {
             if (comment != null)
             {
                 Comment comment1 = DataHelper.ChangeCommentDTOToComment(comment);
-                await repository.AddCommentAsync(comment1);
-                return Request.CreateResponse("");
+                repository.AddCommentAsync(comment1);
+                return Request.CreateResponse(HttpStatusCode.Accepted, "Save successful for comment");
             }
             else
             {
