@@ -1,11 +1,10 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CoffeeStore.Domain.Concrete;
 using CoffeeStore.Domain.Entities;
+using Moq;
+using CoffeeStore.Domain.Abstract;
 
 namespace CoffeeStoreUnitTest.DomainProjectUnitTests
 {
@@ -69,5 +68,6 @@ namespace CoffeeStoreUnitTest.DomainProjectUnitTests
             repository.DeleteProduct(47);
             Assert.That(repository.Products.Any(pd => pd.P_Name!="Test"));
         }
+
     }
 }

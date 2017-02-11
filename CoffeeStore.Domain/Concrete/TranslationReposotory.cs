@@ -12,6 +12,11 @@ namespace CoffeeStore.Domain.Concrete
     {
         private EFDbContext context = new EFDbContext();
 
+        public TranslationRepository(EFDbContext context)
+        {
+            this.context = context;
+        }
+
         public Dictionary<string, string> GetAllTranslationValues()
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
