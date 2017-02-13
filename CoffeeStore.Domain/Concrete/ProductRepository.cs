@@ -27,6 +27,16 @@ namespace CoffeeStore.Domain.Concrete
             get { return context.Products; }
         }
 
+        public IEnumerable<Product> GetProductsWithComments()
+        {
+            IEnumerable<Product> products = context.Products;
+            Products.ToList().ForEach(x =>
+            {
+                x.Comments = context.Comments.Where(c => c.ProductID == x.ProductID).ToList();
+            });
+            return products;
+        }
+
         public Product GetProductById(int productId)
         {
             Product dbEntry = context.Products.Find(productId);

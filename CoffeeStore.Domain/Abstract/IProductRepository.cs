@@ -20,5 +20,6 @@ namespace CoffeeStore.Domain.Abstract
         Task<int> AddCommentAsync(Comment comment);
         IEnumerable<Product> GetProductsByLabel(string label);
         string GetCategoryName(int categoryId);
+        IEnumerable<Product> GetProductsWithComments();
     }
 }

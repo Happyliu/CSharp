@@ -252,6 +252,7 @@
     <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\api\ShppingCartRedisController.cs" />
+    <Compile Include="Controllers\api\SolrSearchProductController.cs" />
     <Compile Include="Controllers\api\TranslationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,6 +267,7 @@
     <Compile Include="Models\OrderDTO.cs" />
     <Compile Include="Models\OrderLineDTO.cs" />
     <Compile Include="Models\ProductDTO.cs" />
+    <Compile Include="Models\SolrProductResponseModal.cs" />
     <Compile Include="Models\TranslationDTO.cs" />
     <Compile Include="Models\TranslationKeyValueDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
@@ -291,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SolrSearchProduct\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoffeeStore.Domain\CoffeeStore.Domain.csproj">

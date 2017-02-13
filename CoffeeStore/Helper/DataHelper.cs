@@ -1,6 +1,7 @@
 ﻿using CoffeeStore.Domain.Abstract;
 using CoffeeStore.Domain.Concrete;
 using CoffeeStore.Domain.Entities;
+using CoffeeStore.Domain.SolrSearch.Model;
 using CoffeeStore.Models;
 using System;
 using System.Collections.Generic;
@@ -183,6 +184,26 @@ namespace CoffeeStore
                 list.Add(orderdto);
             });
             return list;
+        }
+
+        public static SolrProductResponseModal FormatSolrProductResponse(SolrProductQueryResponse response)
+        {
+            SolrProductResponseModal model = new SolrProductResponseModal();
+            List<Product> list = new List<Product>();
+            model.TotalHits = response.TotalHits;
+            response.Results.ToList().ForEach(x =>
+            {
+                list.Add(new Product
+                {
+                    ProductID = x.ProductID,
+                    P_Name = x.ProductName,
+                    P_Price = (decimal)x.Price,
+                    Description = x.Description,
+                    Label = x.Label
+                });
+            });
+            model.Results = list;
+            return model;
         }
 
     }
