@@ -1,4 +1,4 @@
-# CSharp
+# CoffeeShop
 This is a After-Work Project, I will develop this project in mainly 4 parts.
 
 1. Customer side, Create an customer web site let customer order and provide many other information.
